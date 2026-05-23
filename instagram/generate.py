@@ -183,7 +183,19 @@ def post_01():
 # ══════════════════════════════════════════════════════════════════
 # BOOK POSTS 2–6 — shared template
 # ══════════════════════════════════════════════════════════════════
-def book_post(filename, vol_label, title_lines, hook, accent, bg_tint, illustration_fn):
+def rosette(draw, cx_, cy, r, accent):
+    """Draw a small botanical rosette using circles — replaces ❋."""
+    draw.ellipse([(cx_-r, cy-r), (cx_+r, cy+r)], fill=accent)
+    for angle in range(0, 360, 45):
+        rad = math.radians(angle)
+        px = cx_ + int((r*1.8) * math.cos(rad))
+        py = cy + int((r*1.8) * math.sin(rad))
+        pr = int(r * 0.55)
+        draw.ellipse([(px-pr, py-pr), (px+pr, py+pr)], fill=accent)
+    # White centre dot
+    draw.ellipse([(cx_-r//2, cy-r//2), (cx_+r//2, cy+r//2)], fill=PAPER)
+
+def book_post(filename, vol_label, title_lines, hook, accent, bg_tint, illustration_fn, stats):
     img, draw = new_canvas(PAPER)
 
     # Accent band — top quarter
@@ -191,14 +203,13 @@ def book_post(filename, vol_label, title_lines, hook, accent, bg_tint, illustrat
 
     # Thin double rule below band
     hline(draw, 320, fill=accent, w=2)
-    hline(draw, 324, fill=(accent[0], accent[1], accent[2]), w=1)
+    hline(draw, 324, fill=accent, w=1)
 
     # Volume label
-    fnt_label = font(JURA_L, 22)
-    draw.text((80, 52), vol_label.upper(), font=fnt_label, fill=accent)
+    draw.text((80, 52), vol_label.upper(), font=font(JURA_L, 22), fill=accent)
 
-    # Ornament top-right
-    draw.text((SIZE-100, 44), "❋", font=font(ITALIANA, 42), fill=accent)
+    # Drawn rosette top-right (replaces ❋ text)
+    rosette(draw, SIZE-72, 78, 9, accent)
 
     # Illustration in the band
     illustration_fn(draw, 540, 170, accent)
@@ -219,14 +230,24 @@ def book_post(filename, vol_label, title_lines, hook, accent, bg_tint, illustrat
     hook_fnt = font(CRIMSON_I, 38)
     y = wrap_text(draw, f'"{hook}"', 80, y, SIZE-160, hook_fnt, INK_SOFT, line_gap=6)
 
-    # Decorative ornament cluster — fills lower third
-    orn_y = 700
-    for ox, oy, sz in [(80, orn_y, 22), (114, orn_y+4, 14), (140, orn_y-2, 18)]:
-        draw.text((ox, oy), "❋", font=font(ITALIANA, sz), fill=(accent[0], accent[1], accent[2]))
-    hline(draw, orn_y+34, x0=80, x1=SIZE-80, fill=(210,200,185), w=1)
+    # Stats row — fills the gap after hook
+    stat_y = max(y + 36, 660)
+    # Decorative dot row
+    for dx in range(0, 60, 16):
+        draw.ellipse([(80+dx, stat_y), (86+dx, stat_y+6)], fill=accent)
+    hline(draw, stat_y+3, x0=148, x1=SIZE-80, fill=(210,200,185), w=1)
 
-    # Price + buy line
-    draw.text((80, orn_y+50), "£3.99  ·  Kindle  ·  Amazon UK",
+    stat_y += 22
+    for i, (num, lbl) in enumerate(stats):
+        sx = 80 + i * 220
+        draw.text((sx, stat_y), num, font=font(LORA_B, 32), fill=accent)
+        bb = draw.textbbox((0,0), num, font=font(LORA_B, 32))
+        draw.text((sx, stat_y + bb[3]-bb[1] + 4), lbl.upper(),
+                  font=font(JURA_L, 17), fill=INK_MUTE)
+
+    price_y = stat_y + 80
+    hline(draw, price_y, x0=80, x1=SIZE-80, fill=(210,200,185), w=1)
+    draw.text((80, price_y+14), "£3.99  ·  Kindle  ·  Amazon UK",
               font=font(JURA_L, 24), fill=INK_SOFT)
 
     # Domain
@@ -299,31 +320,36 @@ def post_02():
     book_post("02-green-clean.png", "— Volume I —",
               ["The Green", "Clean Handbook"],
               "Replace every shop-bought spray with 7 ingredients.",
-              SAGE, (229, 235, 221), illus_spray)
+              SAGE, (229, 235, 221), illus_spray,
+              [("38", "Recipes"), ("34", "Pages")])
 
 def post_03():
     book_post("03-natural-beauty.png", "— Volume II —",
               ["The Natural", "Beauty Handbook"],
               "Skincare, hair, body & lips — from oils, butters and the kindest plants.",
-              ROSE, (245, 224, 221), illus_flower)
+              ROSE, (245, 224, 221), illus_flower,
+              [("32", "Recipes"), ("34", "Pages")])
 
 def post_04():
     book_post("04-zero-waste.png", "— Volume III —",
               ["The Zero-Waste", "Kitchen"],
               "Save £800 a year. Turn yesterday's peelings into tonight's stock.",
-              TEAL, (216, 232, 226), illus_jar)
+              TEAL, (216, 232, 226), illus_jar,
+              [("30", "Recipes"), ("32", "Pages")])
 
 def post_05():
     book_post("05-herbal-remedies.png", "— Volume IV —",
               ["Natural Herbal", "Remedies at Home"],
               "Teas, tinctures, syrups & salves. Built from plants on a windowsill.",
-              GOLD, (240, 229, 204), illus_bottle)
+              GOLD, (240, 229, 204), illus_bottle,
+              [("35", "Recipes"), ("40", "Pages")])
 
 def post_06():
     book_post("06-pet-care.png", "— Volume V —",
               ["Natural Pet", "Care at Home"],
               "Chemical-free grooming and gentle remedies for dogs and cats.",
-              BROWN, (235, 223, 208), illus_paw)
+              BROWN, (235, 223, 208), illus_paw,
+              [("30", "Recipes"), ("33", "Pages")])
 
 # ══════════════════════════════════════════════════════════════════
 # RECIPE POSTS 7–11 — shared template
