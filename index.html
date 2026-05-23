@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Natural Home Collection — by C. Morrison</title>
+<meta name="description" content="Five practical handbooks for natural cleaning, beauty, kitchen, herbal remedies, and pet care. By C. Morrison.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter+Tight:wght@300;400;500&family=Caveat:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:           #1F1B16;
+    --ink-soft:      #4A4339;
+    --ink-mute:      #847A6E;
+    --paper:         #FAF6EF;
+    --paper-warm:    #F2EBDF;
+    --paper-deep:    #E6DBC8;
+    --rust:          #A0492D;
+    --rust-deep:     #6E2E1A;
+    --sage:          #6B7F5C;
+    --sage-deep:     #3F4F33;
+    --gold:          #B8893C;
+    --rose:          #B9665E;
+    --line:          rgba(31,27,22,0.18);
+    --line-soft:     rgba(31,27,22,0.08);
+
+    --serif:  'Cormorant Garamond', 'Times New Roman', serif;
+    --sans:   'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+    --hand:   'Caveat', cursive;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Subtle paper grain texture overlay */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image:
+      radial-gradient(rgba(31,27,22,0.025) 1px, transparent 1px);
+    background-size: 3px 3px;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 2; }
+  @media (max-width: 720px) { .container { padding: 0 24px; } }
+
+  /* ─────────────────  TYPOGRAPHY  ───────────────── */
+  .display {
+    font-family: var(--serif);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .display em { font-style: italic; font-weight: 300; color: var(--rust); }
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rust);
+  }
+  .lead {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+  .hand {
+    font-family: var(--hand);
+    font-weight: 500;
+    color: var(--rust);
+  }
+
+  /* ─────────────────  NAVIGATION  ───────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 24px 40px;
+    background: rgba(250, 246, 239, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line-soft);
+    transition: padding 0.3s ease;
+  }
+  nav.scrolled { padding: 16px 40px; }
+  @media (max-width: 720px) { nav, nav.scrolled { padding: 16px 24px; } }
+  .nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .brand em { font-style: italic; font-weight: 300; color: var(--rust); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+    transition: color 0.2s ease;
+    position: relative;
+  }
+  .nav-links a:hover { color: var(--rust); }
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 0; height: 1px;
+    background: var(--rust);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:hover::after { width: 100%; }
+  @media (max-width: 720px) { .nav-links { display: none; } }
+
+  /* ─────────────────  HERO  ───────────────── */
+  .hero {
+    padding: 200px 40px 120px;
+    position: relative;
+    overflow: hidden;
+  }
+  @media (max-width: 720px) { .hero { padding: 140px 24px 80px; } }
+
+  .hero-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: end;
+    position: relative;
+  }
+  @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; gap: 60px; } }
+
+  .hero-text { animation: rise 1.2s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .hero h1 {
+    font-size: clamp(56px, 9vw, 128px);
+    margin: 24px 0 32px;
+  }
+  .hero h1 .line { display: block; }
+  .hero h1 .ornament {
+    display: inline-block;
+    color: var(--rust);
+    font-style: italic;
+    font-size: 0.85em;
+    margin-right: 0.1em;
+  }
+  .hero-sub {
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 32px;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 0;
+    transition: all 0.3s ease;
+    border: 1px solid var(--ink);
+  }
+  .hero-cta:hover { background: var(--rust); border-color: var(--rust); transform: translateY(-2px); }
+  .hero-cta .arrow { transition: transform 0.3s ease; }
+  .hero-cta:hover .arrow { transform: translateX(4px); }
+
+  .hero-meta {
+    display: flex;
+    gap: 40px;
+    margin-top: 48px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+  }
+  .hero-meta-item .num {
+    font-family: var(--serif);
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .hero-meta-item .lab {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 6px;
+  }
+
+  /* Hero illustration — botanical SVG composition */
+  .hero-art {
+    position: relative;
+    aspect-ratio: 4/5;
+    animation: rise 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+  }
+  .hero-art-frame {
+    position: absolute; inset: 0;
+    background: var(--paper-warm);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .hero-art-frame::before {
+    content: "";
+    position: absolute; inset: 12px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    pointer-events: none;
+  }
+  .hero-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .hero-art-tag {
+    position: absolute;
+    bottom: -16px; right: 32px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 8px 18px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transform: rotate(-2deg);
+  }
+  .hero-stamp {
+    position: absolute;
+    top: 24px; left: -28px;
+    width: 90px; height: 90px;
+    background: var(--rust);
+    color: var(--paper);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-12deg);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    line-height: 1.1;
+    text-align: center;
+    padding: 12px;
+    box-shadow: 0 8px 30px rgba(160, 73, 45, 0.25);
+  }
+  .hero-stamp strong {
+    font-size: 24px;
+    font-weight: 400;
+    display: block;
+    margin: 2px 0;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─────────────────  PROMISE STRIP  ───────────────── */
+  .promise {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 24px 40px;
+    overflow: hidden;
+    position: relative;
+  }
+  .promise-track {
+    display: flex;
+    gap: 64px;
+    animation: marquee 40s linear infinite;
+    white-space: nowrap;
+  }
+  .promise-track span {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-style: italic;
+    display: inline-flex;
+    align-items: center;
+    gap: 64px;
+  }
+  .promise-track span::after {
+    content: "❋";
+    color: var(--rust);
+    font-style: normal;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ─────────────────  STORY  ───────────────── */
+  .story { padding: 140px 40px; }
+  @media (max-width: 720px) { .story { padding: 80px 24px; } }
+  .story-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: start;
+  }
+  @media (max-width: 960px) { .story-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+  .story-label {
+    position: sticky;
+    top: 120px;
+  }
+  .story-label .num {
+    font-family: var(--serif);
+    font-size: 96px;
+    font-weight: 300;
+    color: var(--rust);
+    line-height: 1;
+    margin-top: 16px;
+  }
+
+  .story-content h2 {
+    font-size: clamp(40px, 5vw, 64px);
+    margin-bottom: 32px;
+  }
+  .story-content p {
+    margin-bottom: 24px;
+    font-size: 18px;
+    line-height: 1.75;
+  }
+  .story-content p.opener {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 40px;
+  }
+  .story-content p.opener::first-letter {
+    font-family: var(--serif);
+    font-size: 96px;
+    font-weight: 400;
+    float: left;
+    line-height: 0.85;
+    margin: 6px 12px 0 0;
+    color: var(--rust);
+  }
+  .signature {
+    margin-top: 48px;
+    font-family: var(--hand);
+    font-size: 32px;
+    color: var(--rust);
+    transform: rotate(-2deg);
+    display: inline-block;
+  }
+  .signature-meta {
+    display: block;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 4px;
+    transform: rotate(0deg);
+  }
+
+  /* ─────────────────  COLLECTION  ───────────────── */
+  .collection {
+    padding: 140px 40px;
+    background: var(--paper-warm);
+    position: relative;
+  }
+  @media (max-width: 720px) { .collection { padding: 80px 24px; } }
+
+  .collection-head {
+    max-width: 1280px;
+    margin: 0 auto 80px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 80px;
+    align-items: end;
+  }
+  @media (max-width: 960px) {
+    .collection-head { grid-template-columns: 1fr; gap: 24px; }
+  }
+  .collection h2 {
+    font-size: clamp(48px, 7vw, 96px);
+    line-height: 0.95;
+  }
+  .collection-intro p {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+
+  .books {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+  @media (max-width: 720px) { .books { grid-template-columns: 1fr; gap: 20px; } }
+
+  .book {
+    background: var(--paper);
+    padding: 40px;
+    position: relative;
+    border: 1px solid var(--line-soft);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    overflow: hidden;
+  }
+  @media (max-width: 720px) { .book { padding: 28px; } }
+
+  .book::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 50%, var(--accent, var(--rust)) 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+    clip-path: polygon(100% 0, 100% 60px, calc(100% - 60px) 0);
+  }
+  .book:hover { transform: translateY(-6px); border-color: var(--accent, var(--rust)); }
+  .book:hover::before { opacity: 0.12; }
+  .book:hover .book-num { color: var(--accent, var(--rust)); }
+
+  .book-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-mute);
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+    position: relative;
+    z-index: 1;
+  }
+  .book-cover {
+    position: relative;
+    aspect-ratio: 2/3;
+    background: var(--accent-bg, var(--paper-deep));
+    overflow: hidden;
+    z-index: 1;
+  }
+  .book-cover svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .book-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    z-index: 1;
+  }
+  .book-meta .pages {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .book-meta .price {
+    margin-left: auto;
+    font-family: var(--serif);
+    font-size: 28px;
+    color: var(--ink);
+  }
+  .book h3 {
+    font-family: var(--serif);
+    font-size: 30px;
+    line-height: 1.1;
+    color: var(--ink);
+    z-index: 1;
+  }
+  .book p {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    z-index: 1;
+  }
+  .book-cta {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--ink);
+    padding-top: 16px;
+    border-top: 1px solid var(--line-soft);
+    z-index: 1;
+    transition: color 0.3s ease;
+  }
+  .book-cta::after {
+    content: "→";
+    transition: transform 0.3s ease;
+  }
+  .book:hover .book-cta { color: var(--accent, var(--rust)); }
+  .book:hover .book-cta::after { transform: translateX(4px); }
+
+  /* ─────────────────  PHILOSOPHY  ───────────────── */
+  .philosophy {
+    padding: 160px 40px;
+    background: var(--ink);
+    color: var(--paper-warm);
+    position: relative;
+    overflow: hidden;
+  }
+  @media (max-width: 720px) { .philosophy { padding: 100px 24px; } }
+  .philosophy::before {
+    content: "❋";
+    position: absolute;
+    font-size: 600px;
+    color: rgba(160, 73, 45, 0.06);
+    right: -80px;
+    top: -100px;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .philosophy-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 80px;
+    position: relative;
+  }
+  @media (max-width: 960px) { .philosophy-grid { grid-template-columns: 1fr; gap: 48px; } }
+
+  .philosophy-grid h2 {
+    font-size: clamp(40px, 6vw, 80px);
+    line-height: 1;
+    color: var(--paper);
+  }
+  .philosophy-grid h2 em { color: var(--rust); }
+
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px 32px;
+  }
+  @media (max-width: 720px) { .principles { grid-template-columns: 1fr; } }
+  .principle .icon {
+    width: 36px; height: 36px;
+    margin-bottom: 16px;
+    color: var(--rust);
+  }
+  .principle h4 {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--paper);
+    margin-bottom: 10px;
+  }
+  .principle p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(242, 235, 223, 0.7);
+  }
+
+  /* ─────────────────  FREE RESOURCE  ───────────────── */
+  .resource {
+    padding: 140px 40px;
+    background: var(--paper);
+    position: relative;
+    overflow: hidden;
+  }
+  @media (max-width: 720px) { .resource { padding: 90px 24px; } }
+  .resource::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(160, 73, 45, 0.04) 0, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(107, 127, 92, 0.04) 0, transparent 40%);
+    pointer-events: none;
+  }
+  .resource-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+  }
+  @media (max-width: 960px) { .resource-grid { grid-template-columns: 1fr; gap: 56px; } }
+
+  .resource-text h2 {
+    font-size: clamp(40px, 5.5vw, 72px);
+    line-height: 1;
+    margin: 16px 0 24px;
+  }
+  .resource-text .lead {
+    margin-bottom: 32px;
+    max-width: 540px;
+  }
+  .resource-features {
+    list-style: none;
+    margin: 32px 0;
+    padding: 0;
+  }
+  .resource-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line-soft);
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .resource-features li:last-child { border-bottom: none; }
+  .resource-features .feat-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--rust);
+    min-width: 32px;
+    flex-shrink: 0;
+  }
+  .resource-features strong {
+    color: var(--ink);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .resource-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 36px;
+    background: var(--rust);
+    color: var(--paper);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: 1px solid var(--rust);
+    transition: all 0.3s ease;
+    margin-top: 12px;
+  }
+  .resource-cta:hover {
+    background: var(--rust-deep);
+    border-color: var(--rust-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(160, 73, 45, 0.2);
+  }
+  .resource-cta .arrow { transition: transform 0.3s ease; }
+  .resource-cta:hover .arrow { transform: translateY(2px); }
+  .resource-cta-meta {
+    display: block;
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--ink-mute);
+    font-style: italic;
+  }
+
+  /* Mock PDF preview on the right */
+  .pdf-preview {
+    position: relative;
+    perspective: 1500px;
+    height: 540px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pdf-stack {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    aspect-ratio: 1 / 1.414;
+    transform-style: preserve-3d;
+    transform: rotateY(-12deg) rotateX(4deg);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .pdf-preview:hover .pdf-stack { transform: rotateY(-6deg) rotateX(2deg) translateY(-8px); }
+
+  .pdf-page {
+    position: absolute;
+    inset: 0;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    box-shadow: 0 30px 60px -20px rgba(31, 27, 22, 0.25),
+                0 8px 20px -8px rgba(31, 27, 22, 0.15);
+    display: flex;
+    flex-direction: column;
+    padding: 40px 36px;
+    overflow: hidden;
+  }
+  .pdf-page::before {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 0.5px solid var(--line);
+    pointer-events: none;
+  }
+
+  /* Background pages — peeking out behind */
+  .pdf-page-bg-1 {
+    transform: translate(12px, 14px) rotateZ(2deg);
+    background: var(--paper-warm);
+    z-index: 1;
+  }
+  .pdf-page-bg-2 {
+    transform: translate(6px, 7px) rotateZ(1deg);
+    background: var(--paper-warm);
+    z-index: 2;
+  }
+  .pdf-page-front {
+    z-index: 3;
+    text-align: center;
+  }
+
+  .pdf-eyebrow {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    color: var(--rust);
+    margin: 32px 0 24px;
+    text-transform: uppercase;
+  }
+  .pdf-title-the {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 26px;
+    color: var(--ink-soft);
+    margin-bottom: 4px;
+  }
+  .pdf-title-main {
+    font-family: var(--serif);
+    font-size: 38px;
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .pdf-title-accent {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 44px;
+    line-height: 1;
+    color: var(--rust);
+    margin-bottom: 4px;
+  }
+  .pdf-rule {
+    width: 60%;
+    margin: 16px auto;
+    height: 1px;
+    background: var(--rust);
+    position: relative;
+  }
+  .pdf-rule::after {
+    content: "❋";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--paper);
+    color: var(--rust);
+    padding: 0 8px;
+    font-size: 12px;
+  }
+  .pdf-sub {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    margin-bottom: 24px;
+    padding: 0 16px;
+  }
+  .pdf-botanical {
+    margin: auto auto 16px;
+    width: 60px;
+    height: 80px;
+  }
+  .pdf-author {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink);
+    margin-top: auto;
+  }
+  .pdf-meta {
+    font-family: var(--serif);
+    font-size: 10px;
+    color: var(--ink-mute);
+    margin-top: 4px;
+  }
+
+  /* Floating tag */
+  .pdf-tag {
+    position: absolute;
+    top: -16px;
+    right: -20px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 8px 16px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transform: rotate(8deg);
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  .pdf-tag em {
+    font-style: italic;
+    color: var(--rust);
+    font-size: 13px;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  /* ─────────────────  TESTIMONIAL  ───────────────── */
+  .testimonial {
+    padding: 140px 40px;
+    background: var(--paper-deep);
+    position: relative;
+  }
+  @media (max-width: 720px) { .testimonial { padding: 80px 24px; } }
+  .testimonial-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+  .testimonial-inner .quote-mark {
+    font-family: var(--serif);
+    font-size: 200px;
+    line-height: 0.5;
+    color: var(--rust);
+    opacity: 0.2;
+    margin-bottom: -40px;
+  }
+  .testimonial blockquote {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4vw, 44px);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 32px;
+  }
+  .testimonial cite {
+    font-style: normal;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  /* ─────────────────  CTA  ───────────────── */
+  .cta-section {
+    padding: 160px 40px;
+    text-align: center;
+    background: var(--paper);
+    position: relative;
+  }
+  @media (max-width: 720px) { .cta-section { padding: 100px 24px; } }
+  .cta-section h2 {
+    font-size: clamp(48px, 8vw, 112px);
+    line-height: 0.95;
+    margin-bottom: 32px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-section p {
+    font-size: 20px;
+    max-width: 540px;
+    margin: 0 auto 48px;
+    color: var(--ink-soft);
+  }
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 32px;
+    background: transparent;
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1px solid var(--ink);
+    transition: all 0.3s ease;
+  }
+  .btn-secondary:hover { background: var(--ink); color: var(--paper); }
+
+  /* ─────────────────  FOOTER  ───────────────── */
+  footer {
+    background: var(--ink);
+    color: var(--paper-warm);
+    padding: 80px 40px 32px;
+  }
+  @media (max-width: 720px) { footer { padding: 60px 24px 32px; } }
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid rgba(242, 235, 223, 0.1);
+  }
+  @media (max-width: 720px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
+  .footer-brand {
+    font-family: var(--serif);
+    font-size: 32px;
+    color: var(--paper);
+  }
+  .footer-brand em { font-style: italic; font-weight: 300; color: var(--rust); }
+  .footer-tag {
+    margin-top: 12px;
+    font-size: 14px;
+    color: rgba(242, 235, 223, 0.55);
+    max-width: 280px;
+  }
+  .footer-col h5 {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col a {
+    font-size: 14px;
+    color: rgba(242, 235, 223, 0.75);
+    transition: color 0.2s ease;
+  }
+  .footer-col a:hover { color: var(--paper); }
+  .footer-bottom {
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 12px;
+    color: rgba(242, 235, 223, 0.4);
+  }
+
+  /* ─────────────────  REVEAL ON SCROLL  ───────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- ─────────  NAV  ───────── -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">The Natural <em>Home</em> Collection</a>
+    <div class="nav-links">
+      <a href="#story">Story</a>
+      <a href="#collection">The Books</a>
+      <a href="recipes/">Recipes</a>
+      <a href="#resource">Free Guide</a>
+      <a href="#shop">Shop</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ─────────  HERO  ───────── -->
+<section class="hero" id="top">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow">A series of five handbooks</span>
+      <h1 class="display">
+        <span class="line"><span class="ornament">❋</span> Slow living,</span>
+        <span class="line"><em>plainly</em> written.</span>
+      </h1>
+      <p class="lead hero-sub">
+        Practical guides for a quieter, kinder home — natural cleaning, beauty, kitchen, herbs, and pet care. No fads, no fluff. Just recipes that work.
+      </p>
+      <a href="#collection" class="hero-cta">
+        Explore the Collection
+        <span class="arrow">→</span>
+      </a>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="num">5</div>
+          <div class="lab">Handbooks</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="num">170+</div>
+          <div class="lab">Recipes</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="num">£20</div>
+          <div class="lab">Whole series</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="hero-stamp">
+        Est.<strong>2025</strong>
+      </div>
+      <div class="hero-art-frame">
+        <svg class="hero-svg" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <!-- Botanical stem composition -->
+          <defs>
+            <pattern id="grain" patternUnits="userSpaceOnUse" width="4" height="4">
+              <rect width="4" height="4" fill="#F2EBDF"/>
+              <circle cx="1" cy="1" r="0.3" fill="#1F1B16" opacity="0.04"/>
+              <circle cx="3" cy="3" r="0.3" fill="#1F1B16" opacity="0.04"/>
+            </pattern>
+          </defs>
+          <rect width="400" height="500" fill="url(#grain)"/>
+
+          <!-- Stem -->
+          <path d="M200 460 Q 195 350 205 250 Q 215 140 195 70" stroke="#3F4F33" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+          <!-- Leaves left -->
+          <g fill="#6B7F5C" opacity="0.92">
+            <path d="M200 380 Q 130 360 105 320 Q 125 340 195 360 Z"/>
+            <path d="M203 320 Q 140 295 115 250 Q 138 280 200 305 Z"/>
+            <path d="M205 260 Q 150 240 130 200 Q 158 230 207 248 Z"/>
+            <path d="M200 200 Q 145 175 125 135 Q 155 162 198 188 Z"/>
+            <path d="M196 140 Q 160 122 145 90 Q 168 110 195 130 Z"/>
+          </g>
+
+          <!-- Leaves right -->
+          <g fill="#3F4F33" opacity="0.95">
+            <path d="M200 410 Q 270 390 295 350 Q 275 372 205 390 Z"/>
+            <path d="M203 350 Q 268 325 290 280 Q 268 312 207 335 Z"/>
+            <path d="M204 290 Q 263 268 282 230 Q 258 258 207 280 Z"/>
+            <path d="M200 230 Q 256 208 275 168 Q 248 195 200 218 Z"/>
+            <path d="M198 170 Q 235 150 250 118 Q 226 138 198 158 Z"/>
+          </g>
+
+          <!-- Top flower head -->
+          <g transform="translate(195 70)">
+            <circle r="14" fill="#A0492D"/>
+            <circle r="8" fill="#B9665E"/>
+            <circle r="3" fill="#FAF6EF"/>
+            <g fill="#A0492D">
+              <ellipse cx="0" cy="-22" rx="4" ry="10"/>
+              <ellipse cx="20" cy="-12" rx="4" ry="10" transform="rotate(60 20 -12)"/>
+              <ellipse cx="20" cy="12" rx="4" ry="10" transform="rotate(120 20 12)"/>
+              <ellipse cx="0" cy="22" rx="4" ry="10"/>
+              <ellipse cx="-20" cy="12" rx="4" ry="10" transform="rotate(-120 -20 12)"/>
+              <ellipse cx="-20" cy="-12" rx="4" ry="10" transform="rotate(-60 -20 -12)"/>
+            </g>
+          </g>
+
+          <!-- Tiny berries -->
+          <g fill="#A0492D">
+            <circle cx="290" cy="220" r="3"/>
+            <circle cx="296" cy="226" r="3"/>
+            <circle cx="288" cy="230" r="3"/>
+            <circle cx="115" cy="290" r="3"/>
+            <circle cx="121" cy="296" r="3"/>
+            <circle cx="113" cy="300" r="3"/>
+          </g>
+
+          <!-- Soil base -->
+          <path d="M0 490 Q 100 470 200 478 Q 300 486 400 470 L 400 500 L 0 500 Z" fill="#6E2E1A" opacity="0.18"/>
+        </svg>
+      </div>
+      <div class="hero-art-tag">By C. Morrison</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────  PROMISE STRIP  ───────── -->
+<section class="promise">
+  <div class="promise-track">
+    <span>No synthetic fragrances</span>
+    <span>UK-tested recipes</span>
+    <span>Plant-based, plain-spoken</span>
+    <span>Less waste, more ritual</span>
+    <span>No synthetic fragrances</span>
+    <span>UK-tested recipes</span>
+    <span>Plant-based, plain-spoken</span>
+    <span>Less waste, more ritual</span>
+  </div>
+</section>
+
+<!-- ─────────  STORY  ───────── -->
+<section class="story" id="story">
+  <div class="story-grid">
+    <div class="story-label reveal">
+      <span class="eyebrow">The Author</span>
+      <div class="num">01</div>
+    </div>
+    <div class="story-content reveal">
+      <h2 class="display">A few <em>jars</em>, a kettle, and a kinder way of running a home.</h2>
+      <p class="opener">The Natural Home Collection began with a question I couldn't shake — why are the products in our cupboards full of ingredients we'd never knowingly choose?</p>
+      <p>Most cleaning sprays, beauty products, and pet shampoos are built around the same handful of synthetic chemicals. They work, but they're hard on lungs, skin, waterways, and family budgets. The alternatives have been around for centuries: bicarbonate, vinegar, beeswax, lemon, plant oils, dried herbs.</p>
+      <p>What's been missing is a clear, modern guide to actually using them. So I wrote five — one for each room of the home where the difference matters most. Every recipe has been tested in a real UK kitchen, photographed, and sourced through ingredients you can buy on the high street.</p>
+      <p>This is not perfectionism. It's not a movement. It's just a calmer, less wasteful, slightly more beautiful way of doing the things you were going to do anyway.</p>
+      <div class="signature">
+        — Caroline Morrison
+        <span class="signature-meta">Author, The Natural Home Collection</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────  COLLECTION  ───────── -->
+<section class="collection" id="collection">
+  <div class="collection-head">
+    <h2 class="display reveal"><em>The</em> Books.</h2>
+    <div class="collection-intro reveal">
+      <span class="eyebrow">Five practical handbooks</span>
+      <p style="margin-top:16px">Each book stands alone. Read together they form a complete library for running a calmer, more natural household.</p>
+    </div>
+  </div>
+  <div class="books">
+
+    <!-- Book 1 -->
+    <article class="book reveal" style="--accent: #6B7F5C; --accent-bg: #E5EBDD;">
+      <div class="book-num">— Volume i —</div>
+      <div class="book-cover">
+        <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="300" fill="#E5EBDD"/>
+          <rect x="14" y="14" width="172" height="272" fill="none" stroke="#3F4F33" stroke-width="0.5"/>
+          <text x="100" y="60" text-anchor="middle" font-family="Cormorant Garamond" font-size="14" fill="#3F4F33" letter-spacing="3">VOLUME I</text>
+          <line x1="60" y1="78" x2="140" y2="78" stroke="#3F4F33" stroke-width="0.5"/>
+          <text x="100" y="125" text-anchor="middle" font-family="Cormorant Garamond" font-size="22" font-style="italic" fill="#1F1B16">The</text>
+          <text x="100" y="155" text-anchor="middle" font-family="Cormorant Garamond" font-size="26" font-weight="500" fill="#1F1B16">Green</text>
+          <text x="100" y="183" text-anchor="middle" font-family="Cormorant Garamond" font-size="26" font-weight="500" fill="#1F1B16">Clean</text>
+          <text x="100" y="206" text-anchor="middle" font-family="Cormorant Garamond" font-size="13" font-style="italic" fill="#3F4F33">Handbook</text>
+          <g transform="translate(100 240)" stroke="#3F4F33" stroke-width="0.6" fill="none">
+            <path d="M0 -8 Q -10 -4 -10 4 Q -5 10 0 8 Q 5 10 10 4 Q 10 -4 0 -8 Z" fill="#6B7F5C" opacity="0.6"/>
+            <line x1="0" y1="0" x2="0" y2="12"/>
+          </g>
+          <text x="100" y="278" text-anchor="middle" font-family="Inter Tight" font-size="8" fill="#3F4F33" letter-spacing="2">C. MORRISON</text>
+        </svg>
+      </div>
+      <div class="book-meta">
+        <span class="pages">34 pp · 38 recipes</span>
+        <span class="price">£3.99</span>
+      </div>
+      <h3>The Green Clean Handbook</h3>
+      <p>Replace every shop-bought spray with seven ingredients. From oven-cleaning paste to laundry powder — the cupboard reset.</p>
+      <a href="https://www.amazon.co.uk/dp/B0GX2TV85T?tag=cazza09-21" target="_blank" rel="noopener" class="book-cta">View on Amazon</a>
+    </article>
+
+    <!-- Book 2 -->
+    <article class="book reveal" style="--accent: #B9665E; --accent-bg: #F5E0DD;">
+      <div class="book-num">— Volume ii —</div>
+      <div class="book-cover">
+        <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="300" fill="#F5E0DD"/>
+          <rect x="14" y="14" width="172" height="272" fill="none" stroke="#6E2E1A" stroke-width="0.5"/>
+          <text x="100" y="60" text-anchor="middle" font-family="Cormorant Garamond" font-size="14" fill="#6E2E1A" letter-spacing="3">VOLUME II</text>
+          <line x1="60" y1="78" x2="140" y2="78" stroke="#6E2E1A" stroke-width="0.5"/>
+          <text x="100" y="125" text-anchor="middle" font-family="Cormorant Garamond" font-size="22" font-style="italic" fill="#1F1B16">The</text>
+          <text x="100" y="155" text-anchor="middle" font-family="Cormorant Garamond" font-size="26" font-weight="500" fill="#1F1B16">Natural</text>
+          <text x="100" y="183" text-anchor="middle" font-family="Cormorant Garamond" font-size="26" font-weight="500" fill="#1F1B16">Beauty</text>
+          <text x="100" y="206" text-anchor="middle" font-family="Cormorant Garamond" font-size="13" font-style="italic" fill="#6E2E1A">Handbook</text>
+          <g transform="translate(100 240)">
+            <circle r="10" fill="#B9665E"/>
+            <circle r="6" fill="#A0492D"/>
+            <circle r="2" fill="#F5E0DD"/>
+          </g>
+          <text x="100" y="278" text-anchor="middle" font-family="Inter Tight" font-size="8" fill="#6E2E1A" letter-spacing="2">C. MORRISON</text>
+        </svg>
+      </div>
+      <div class="book-meta">
+        <span class="pages">34 pp · 32 recipes</span>
+        <span class="price">£3.99</span>
+      </div>
+      <h3>The Natural Beauty Handbook</h3>
+      <p>Skincare, hair, body, lips, and bath — recipes built from oils, butters, clays, and the kindest plants for your skin.</p>
+      <a href="https://www.amazon.co.uk/dp/B0GX35XZSG?tag=cazza09-21" target="_blank" rel="noopener" class="book-cta">View on Amazon</a>
+    </article>
+
+    <!-- Book 3 -->
+    <article class="book reveal" style="--accent: #2E6B5E; --accent-bg: #D8E8E2;">
+      <div class="book-num">— Volume iii —</div>
+      <div class="book-cover">
+        <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="300" fill="#D8E8E2"/>
+          <rect x="14" y="14" width="172" height="272" fill="none" stroke="#1F4035" stroke-width="0.5"/>
+          <text x="100" y="60" text-anchor="middle" font-family="Cormorant Garamond" font-size="14" fill="#1F4035" letter-spacing="3">VOLUME III</text>
+          <line x1="60" y1="78" x2="140" y2="78" stroke="#1F4035" stroke-width="0.5"/>
+          <text x="100" y="125" text-anchor="middle" font-family="Cormorant Garamond" font-size="22" font-style="italic" fill="#1F1B16">The</text>
+          <text x="100" y="155" text-anchor="middle" font-family="Cormorant Garamond" font-size="24" font-weight="500" fill="#1F1B16">Zero-Waste</text>
+          <text x="100" y="183" text-anchor="middle" font-family="Cormorant Garamond" font-size="26" font-weight="500" fill="#1F1B16">Kitchen</text>
+          <g transform="translate(100 230)" stroke="#1F4035" stroke-width="0.6" fill="none">
+            <rect x="-12" y="-8" width="24" height="20" rx="2" fill="#2E6B5E" opacity="0.4"/>
+            <line x1="-8" y1="-12" x2="-8" y2="-8"/>
+            <line x1="0" y1="-14" x2="0" y2="-8"/>
+            <line x1="8" y1="-12" x2="8" y2="-8"/>
+          </g>
+          <text x="100" y="278" text-anchor="middle" font-family="Inter Tight" font-size="8" fill="#1F4035" letter-spacing="2">C. MORRISON</text>
+        </svg>
+      </div>
+      <div class="book-meta">
+        <span class="pages">32 pp · 30 recipes</span>
+        <span class="price">£3.99</span>
+      </div>
+      <h3>The Zero-Waste Kitchen</h3>
+      <p>Save £800 a year, banish plastic from your cupboards, and turn yesterday's vegetable peelings into tonight's stock.</p>
+      <a href="https://www.amazon.co.uk/dp/B0GZL6WXG9?tag=cazza09-21" target="_blank" rel="noopener" class="book-cta">View on Amazon</a>
+    </article>
+
+    <!-- Book 4 -->
+    <article class="book reveal" style="--accent: #B8893C; --accent-bg: #F0E5CC;">
+      <div class="book-num">— Volume iv —</div>
+      <div class="book-cover">
+        <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="300" fill="#F0E5CC"/>
+          <rect x="14" y="14" width="172" height="272" fill="none" stroke="#6B5018" stroke-width="0.5"/>
+          <text x="100" y="60" text-anchor="middle" font-family="Cormorant Garamond" font-size="14" fill="#6B5018" letter-spacing="3">VOLUME IV</text>
+          <line x1="60" y1="78" x2="140" y2="78" stroke="#6B5018" stroke-width="0.5"/>
+          <text x="100" y="120" text-anchor="middle" font-family="Cormorant Garamond" font-size="20" font-style="italic" fill="#1F1B16">Natural</text>
+          <text x="100" y="150" text-anchor="middle" font-family="Cormorant Garamond" font-size="26" font-weight="500" fill="#1F1B16">Herbal</text>
+          <text x="100" y="178" text-anchor="middle" font-family="Cormorant Garamond" font-size="26" font-weight="500" fill="#1F1B16">Remedies</text>
+          <text x="100" y="201" text-anchor="middle" font-family="Cormorant Garamond" font-size="13" font-style="italic" fill="#6B5018">at home</text>
+          <g transform="translate(100 240)" stroke="#6B5018" stroke-width="0.6" fill="none">
+            <path d="M0 -10 Q -8 0 0 10 Q 8 0 0 -10" fill="#B8893C" opacity="0.5"/>
+            <line x1="0" y1="-10" x2="0" y2="10"/>
+            <line x1="-5" y1="-3" x2="5" y2="-3"/>
+          </g>
+          <text x="100" y="278" text-anchor="middle" font-family="Inter Tight" font-size="8" fill="#6B5018" letter-spacing="2">C. MORRISON</text>
+        </svg>
+      </div>
+      <div class="book-meta">
+        <span class="pages">40 pp · 35 recipes</span>
+        <span class="price">£3.99</span>
+      </div>
+      <h3>Natural Herbal Remedies at Home</h3>
+      <p>Teas, tinctures, syrups, and salves for the everyday — built from plants you can grow on a windowsill or buy by the gram.</p>
+      <a href="https://www.amazon.co.uk/dp/B0GZL5GL5N?tag=cazza09-21" target="_blank" rel="noopener" class="book-cta">View on Amazon</a>
+    </article>
+
+    <!-- Book 5 -->
+    <article class="book reveal" style="--accent: #7B4F2E; --accent-bg: #EBDFD0;">
+      <div class="book-num">— Volume v —</div>
+      <div class="book-cover">
+        <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="300" fill="#EBDFD0"/>
+          <rect x="14" y="14" width="172" height="272" fill="none" stroke="#3D2B1F" stroke-width="0.5"/>
+          <text x="100" y="60" text-anchor="middle" font-family="Cormorant Garamond" font-size="14" fill="#3D2B1F" letter-spacing="3">VOLUME V</text>
+          <line x1="60" y1="78" x2="140" y2="78" stroke="#3D2B1F" stroke-width="0.5"/>
+          <text x="100" y="120" text-anchor="middle" font-family="Cormorant Garamond" font-size="20" font-style="italic" fill="#1F1B16">Natural</text>
+          <text x="100" y="150" text-anchor="middle" font-family="Cormorant Garamond" font-size="26" font-weight="500" fill="#1F1B16">Pet Care</text>
+          <text x="100" y="178" text-anchor="middle" font-family="Cormorant Garamond" font-size="20" font-style="italic" fill="#1F1B16">at home</text>
+          <g transform="translate(100 235)">
+            <circle cx="0" cy="0" r="8" fill="#7B4F2E"/>
+            <circle cx="-10" cy="-8" r="4" fill="#7B4F2E"/>
+            <circle cx="0" cy="-12" r="4" fill="#7B4F2E"/>
+            <circle cx="10" cy="-8" r="4" fill="#7B4F2E"/>
+            <circle cx="-13" cy="2" r="3.5" fill="#7B4F2E"/>
+          </g>
+          <text x="100" y="278" text-anchor="middle" font-family="Inter Tight" font-size="8" fill="#3D2B1F" letter-spacing="2">C. MORRISON</text>
+        </svg>
+      </div>
+      <div class="book-meta">
+        <span class="pages">33 pp · 30 recipes</span>
+        <span class="price">£3.99</span>
+      </div>
+      <h3>Natural Pet Care at Home</h3>
+      <p>Chemical-free grooming, honest natural flea control, and gentle remedies for both dogs and cats — vet-cautioned throughout.</p>
+      <a href="https://www.amazon.co.uk/dp/B0GZL8Z1YZ?tag=cazza09-21" target="_blank" rel="noopener" class="book-cta">View on Amazon</a>
+    </article>
+
+    <!-- Bundle card -->
+    <article class="book reveal" style="--accent: #A0492D; --accent-bg: #F5E0D5; background: linear-gradient(135deg, #F5E0D5 0%, #FAF6EF 70%); border: 1px solid #A0492D;">
+      <div class="book-num" style="color:#6E2E1A;">— Save £4 —</div>
+      <div style="position:relative; aspect-ratio:2/3; display:flex; flex-direction:column; align-items:center; justify-content:center; background: var(--paper); border:1px solid var(--line);">
+        <div style="font-family:var(--serif); font-size:14px; letter-spacing:0.3em; color:var(--rust); margin-bottom:24px;">THE COMPLETE</div>
+        <div style="font-family:var(--serif); font-size:42px; line-height:0.95; text-align:center; color:var(--ink); margin-bottom:8px; padding:0 16px;">Natural<br><em style="font-style:italic;">Home</em><br>Collection</div>
+        <div style="font-family:var(--serif); font-size:13px; font-style:italic; color:var(--ink-mute); margin-top:24px;">All five volumes</div>
+        <div style="position:absolute; bottom:24px; font-family:var(--serif); font-size:11px; letter-spacing:0.24em; color:var(--rust);">— C. MORRISON —</div>
+      </div>
+      <div class="book-meta">
+        <span class="pages">All 5 volumes · ~170 recipes</span>
+        <span class="price">£15.99</span>
+      </div>
+      <h3>The Complete Collection</h3>
+      <p>The whole library at a kinder price. The natural home in five volumes — start with one, or take them all.</p>
+      <a href="https://www.amazon.co.uk/s?k=C+Morrison+Natural+Home+Collection&tag=cazza09-21" target="_blank" rel="noopener" class="book-cta">View all on Amazon</a>
+    </article>
+
+  </div>
+</section>
+
+<!-- ─────────  PHILOSOPHY  ───────── -->
+<section class="philosophy" id="philosophy">
+  <div class="philosophy-grid">
+    <div class="reveal">
+      <span class="eyebrow" style="color:var(--rust)">The Method</span>
+      <h2 class="display" style="margin-top:24px">Four <em>quiet</em> principles.</h2>
+    </div>
+    <div class="principles reveal">
+      <div class="principle">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2 L12 22 M5 9 Q 5 5, 12 5 Q 19 5, 19 9 M5 15 Q 5 11, 12 11 Q 19 11, 19 15 M3 22 L21 22"/></svg>
+        <h4>Plain ingredients</h4>
+        <p>Bicarbonate, vinegar, beeswax, oats, oils. Every recipe in the collection is built from things that have been in our cupboards for centuries.</p>
+      </div>
+      <div class="principle">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M12 7 L12 12 L15 14"/></svg>
+        <h4>Slow rituals</h4>
+        <p>Making your own takes a few minutes longer than buying. We think those minutes are the point — not a tax. The doing is the difference.</p>
+      </div>
+      <div class="principle">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 6 L21 6 M5 6 L5 19 Q 5 21, 7 21 L17 21 Q 19 21, 19 19 L19 6 M9 10 L9 17 M15 10 L15 17 M9 3 L15 3 L15 6 L9 6 Z"/></svg>
+        <h4>Honest about limits</h4>
+        <p>Natural is not a synonym for safe or always-effective. We tell you when shop-bought is genuinely the better choice — and when it isn't.</p>
+      </div>
+      <div class="principle">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 3 L4 9 L4 21 L20 21 L20 9 L12 3 Z M9 14 Q 12 10, 15 14 Q 14 16, 12 16 Q 10 16, 9 14"/></svg>
+        <h4>Built for British homes</h4>
+        <p>Metric measures, ingredients you can buy at any supermarket, and a tone that doesn't sound like it was translated from a Californian wellness blog.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────  FREE RESOURCE  ───────── -->
+<section class="resource" id="resource">
+  <div class="resource-grid">
+    <div class="resource-text reveal">
+      <span class="eyebrow">A free companion guide</span>
+      <h2 class="display">The <em>complete</em> shopping list.</h2>
+      <p class="lead">Every ingredient, container, and tool from across the five handbooks — gathered into one beautifully designed PDF, organised by category, with direct links to Amazon UK.</p>
+
+      <ul class="resource-features">
+        <li>
+          <span class="feat-num">i</span>
+          <span><strong>146 considered products</strong>across 12 categories — from bicarbonate of soda to dried elderberries to compostable poo bags.</span>
+        </li>
+        <li>
+          <span class="feat-num">ii</span>
+          <span><strong>One click to Amazon UK</strong>each entry shows which book(s) use it and links straight to a recommended product.</span>
+        </li>
+        <li>
+          <span class="feat-num">iii</span>
+          <span><strong>Print or save</strong>20 pages of editorial-quality design. Built to live on your fridge or your phone.</span>
+        </li>
+      </ul>
+
+      <a href="Natural_Home_Recommended_Products.pdf" class="resource-cta" download>
+        Download the free guide
+        <span class="arrow">↓</span>
+      </a>
+      <span class="resource-cta-meta">PDF, 170 KB · No sign-up required</span>
+    </div>
+
+    <div class="pdf-preview reveal">
+      <div class="pdf-tag">Free <em>·</em> 20 pp</div>
+      <div class="pdf-stack">
+        <div class="pdf-page pdf-page-bg-1"></div>
+        <div class="pdf-page pdf-page-bg-2"></div>
+        <div class="pdf-page pdf-page-front">
+          <div class="pdf-eyebrow">— A Companion Guide —</div>
+          <div class="pdf-title-the">The</div>
+          <div class="pdf-title-main">RECOMMENDED</div>
+          <div class="pdf-title-accent">Products</div>
+          <div class="pdf-title-main">LIST</div>
+          <div class="pdf-rule"></div>
+          <div class="pdf-sub"><em>Every ingredient, container, and tool from</em><br><em>The Natural Home Collection — in one place.</em></div>
+
+          <svg class="pdf-botanical" viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg">
+            <line x1="30" y1="6" x2="30" y2="74" stroke="#3F4F33" stroke-width="1.5"/>
+            <circle cx="30" cy="6" r="3" fill="#A0492D"/>
+            <path d="M30 22 Q 16 18 8 26 Q 18 28 30 26 Z" fill="#6B7F5C"/>
+            <path d="M30 22 Q 44 18 52 26 Q 42 28 30 26 Z" fill="#6B7F5C"/>
+            <path d="M30 38 Q 14 34 6 44 Q 18 46 30 42 Z" fill="#3F4F33"/>
+            <path d="M30 38 Q 46 34 54 44 Q 42 46 30 42 Z" fill="#3F4F33"/>
+            <path d="M30 54 Q 16 50 10 58 Q 20 60 30 58 Z" fill="#6B7F5C"/>
+            <path d="M30 54 Q 44 50 50 58 Q 40 60 30 58 Z" fill="#6B7F5C"/>
+          </svg>
+
+          <div class="pdf-author">by C. Morrison</div>
+          <div class="pdf-meta">The Natural Home Collection · 2025</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────  TESTIMONIAL  ───────── -->
+<section class="testimonial">
+  <div class="testimonial-inner reveal">
+    <div class="quote-mark">"</div>
+    <blockquote>I expected another aspirational lifestyle book. What I got was a kitchen-tested manual that quietly replaced half the things in my cleaning cupboard within a fortnight.</blockquote>
+    <cite>— A reader, Norwich · ★★★★★</cite>
+  </div>
+</section>
+
+<!-- ─────────  CTA / SHOP  ───────── -->
+<section class="cta-section" id="shop">
+  <div class="reveal">
+    <span class="eyebrow">Available now</span>
+    <h2 class="display" style="margin-top:24px">Begin where you <em>like</em>.</h2>
+    <p>All five handbooks are available on Amazon UK in Kindle format. The complete collection is also available as a bundled set.</p>
+    <div class="cta-buttons">
+      <a href="https://www.amazon.co.uk/s?k=C+Morrison+Natural+Home+Collection&tag=cazza09-21" target="_blank" rel="noopener" class="hero-cta">
+        Shop on Amazon UK
+        <span class="arrow">→</span>
+      </a>
+      <a href="#story" class="btn-secondary">Read the story</a>
+    </div>
+    <p class="hand" style="font-size:24px; margin-top:48px;">Made with care in Cumbernauld.</p>
+  </div>
+</section>
+
+<!-- ─────────  FOOTER  ───────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">The Natural <em>Home</em> Collection</div>
+        <p class="footer-tag">Five practical handbooks for a calmer, more natural household. Written and tested by C. Morrison.</p>
+      </div>
+      <div class="footer-col">
+        <h5>The Books</h5>
+        <ul>
+          <li><a href="#collection">Green Clean</a></li>
+          <li><a href="#collection">Natural Beauty</a></li>
+          <li><a href="#collection">Zero-Waste Kitchen</a></li>
+          <li><a href="#collection">Herbal Remedies</a></li>
+          <li><a href="#collection">Pet Care</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Read</h5>
+        <ul>
+          <li><a href="#story">The Story</a></li>
+          <li><a href="#philosophy">The Method</a></li>
+          <li><a href="recipes/">Free Recipes</a></li>
+          <li><a href="#resource">Free Companion Guide</a></li>
+          <li><a href="#shop">Where to Buy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Find</h5>
+        <ul>
+          <li><a href="https://www.amazon.co.uk/s?k=C+Morrison+Natural+Home+Collection&tag=cazza09-21">Amazon UK</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Newsletter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 C. Morrison. All rights reserved.</span>
+      <span>Affiliate links carry the cazza09-21 Amazon Associates tag.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav background on scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
