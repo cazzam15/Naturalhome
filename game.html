@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Space Defender</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+    overflow: hidden;
+    touch-action: none;
+  }
+  #hud {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 480px;
+    padding: 8px 12px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  #score-display { color: #ffd700; }
+  #lives-display { color: #ff6b6b; letter-spacing: 2px; }
+  #level-display { color: #7ec8e3; }
+  canvas {
+    display: block;
+    background: #0a0a1a;
+    border: 2px solid #1a1a3e;
+    border-radius: 8px;
+    max-width: 480px;
+    width: 100%;
+  }
+  #controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 480px;
+    padding: 10px 12px;
+    gap: 10px;
+  }
+  .btn {
+    background: #1e1e4a;
+    border: 2px solid #4444aa;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 28px;
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.1s;
+    flex-shrink: 0;
+  }
+  .btn:active { background: #3333aa; }
+  #shoot-btn {
+    background: #3a0a0a;
+    border-color: #ff4444;
+    font-size: 22px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+  #shoot-btn:active { background: #aa1111; }
+  #overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,10,0.92);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    z-index: 10;
+    padding: 20px;
+  }
+  #overlay h1 {
+    font-size: 48px;
+    color: #ffd700;
+    text-shadow: 0 0 20px #ffd700;
+    margin-bottom: 10px;
+  }
+  #overlay p {
+    font-size: 20px;
+    color: #aac8ff;
+    margin: 8px 0;
+  }
+  #overlay .big { font-size: 28px; color: #fff; margin: 15px 0; }
+  #start-btn {
+    margin-top: 20px;
+    background: #1a5a1a;
+    border: 3px solid #44ff44;
+    border-radius: 30px;
+    color: #44ff44;
+    font-size: 26px;
+    font-weight: bold;
+    padding: 14px 50px;
+    cursor: pointer;
+    text-shadow: 0 0 10px #44ff44;
+    box-shadow: 0 0 20px #44ff44;
+  }
+  #hint { font-size: 14px; color: #556; margin-top: 10px; }
+</style>
+</head>
+<body>
+
+<div id="overlay">
+  <h1>🚀 SPACE DEFENDER</h1>
+  <p>Destroy the aliens before they reach Earth!</p>
+  <div class="big" id="overlay-score"></div>
+  <button id="start-btn">PLAY</button>
+  <p id="hint" style="margin-top:16px">Use buttons below or drag to move · Tap 🔴 to shoot</p>
+</div>
+
+<div id="hud">
+  <span id="score-display">⭐ 0</span>
+  <span id="level-display">LEVEL 1</span>
+  <span id="lives-display">❤️❤️❤️</span>
+</div>
+<canvas id="canvas"></canvas>
+<div id="controls">
+  <button class="btn" id="left-btn">◀</button>
+  <button id="shoot-btn" class="btn">🔴<br><small style="font-size:10px">FIRE</small></button>
+  <button class="btn" id="right-btn">▶</button>
+</div>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+// Sizing
+function resize() {
+  const maxW = Math.min(window.innerWidth, 480);
+  canvas.width = maxW;
+  canvas.height = Math.min(window.innerHeight - 200, 520);
+}
+resize();
+window.addEventListener('resize', resize);
+
+// Game state
+let score, lives, level, gameRunning, spawnRate, alienSpeed;
+let ship, bullets, aliens, particles, stars;
+let keys = { left: false, right: false, fire: false };
+let lastShot = 0, lastSpawn = 0, frameId;
+let touchStartX = null;
+
+function init() {
+  score = 0; lives = 3; level = 1;
+  spawnRate = 1800; alienSpeed = 1.2;
+  gameRunning = true;
+
+  ship = { x: canvas.width / 2, y: canvas.height - 55, w: 44, h: 40, speed: 5 };
+  bullets = []; aliens = []; particles = [];
+
+  // Background stars
+  stars = Array.from({ length: 60 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 1.5 + 0.5,
+    s: Math.random() * 0.4 + 0.1
+  }));
+
+  updateHUD();
+  document.getElementById('overlay').style.display = 'none';
+  if (frameId) cancelAnimationFrame(frameId);
+  loop();
+}
+
+function updateHUD() {
+  document.getElementById('score-display').textContent = '⭐ ' + score;
+  document.getElementById('level-display').textContent = 'LEVEL ' + level;
+  document.getElementById('lives-display').textContent = '❤️'.repeat(lives);
+}
+
+// Drawing helpers
+function drawShip(x, y) {
+  ctx.save();
+  ctx.translate(x, y);
+  // Body
+  ctx.fillStyle = '#4488ff';
+  ctx.beginPath();
+  ctx.moveTo(0, -20); ctx.lineTo(18, 18); ctx.lineTo(-18, 18);
+  ctx.closePath(); ctx.fill();
+  // Cockpit
+  ctx.fillStyle = '#aaddff';
+  ctx.beginPath();
+  ctx.ellipse(0, -2, 7, 10, 0, 0, Math.PI * 2);
+  ctx.fill();
+  // Wings
+  ctx.fillStyle = '#2255cc';
+  ctx.beginPath();
+  ctx.moveTo(-18, 18); ctx.lineTo(-30, 28); ctx.lineTo(-10, 18);
+  ctx.closePath(); ctx.fill();
+  ctx.beginPath();
+  ctx.moveTo(18, 18); ctx.lineTo(30, 28); ctx.lineTo(10, 18);
+  ctx.closePath(); ctx.fill();
+  // Engine glow
+  ctx.fillStyle = '#ff8800';
+  ctx.beginPath(); ctx.ellipse(0, 20, 6, 5, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#ffee00';
+  ctx.beginPath(); ctx.ellipse(0, 22, 3, 3, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+}
+
+const ALIEN_TYPES = [
+  { color: '#ff4466', eyes: '#fff', size: 22, score: 10, emoji: null },
+  { color: '#aa44ff', eyes: '#ffff44', size: 26, score: 20, emoji: null },
+  { color: '#ff8800', eyes: '#fff', size: 20, score: 15, emoji: null },
+];
+
+function drawAlien(a) {
+  ctx.save();
+  ctx.translate(a.x, a.y);
+  const t = ALIEN_TYPES[a.type];
+  // Body
+  ctx.fillStyle = t.color;
+  ctx.beginPath();
+  ctx.ellipse(0, 0, t.size, t.size * 0.75, 0, 0, Math.PI * 2);
+  ctx.fill();
+  // Eyes
+  ctx.fillStyle = t.eyes;
+  ctx.beginPath(); ctx.arc(-7, -4, 5, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(7, -4, 5, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#222';
+  ctx.beginPath(); ctx.arc(-7, -3, 2.5, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(7, -3, 2.5, 0, Math.PI * 2); ctx.fill();
+  // Antennae
+  ctx.strokeStyle = t.color;
+  ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(-8, -t.size * 0.7); ctx.lineTo(-12, -t.size * 0.7 - 10); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(8, -t.size * 0.7); ctx.lineTo(12, -t.size * 0.7 - 10); ctx.stroke();
+  ctx.fillStyle = '#fff';
+  ctx.beginPath(); ctx.arc(-12, -t.size * 0.7 - 10, 3, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(12, -t.size * 0.7 - 10, 3, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+}
+
+function spawnParticles(x, y, color) {
+  for (let i = 0; i < 12; i++) {
+    const angle = (Math.PI * 2 * i) / 12 + Math.random() * 0.5;
+    particles.push({
+      x, y,
+      vx: Math.cos(angle) * (2 + Math.random() * 3),
+      vy: Math.sin(angle) * (2 + Math.random() * 3),
+      life: 1, color, r: 3 + Math.random() * 4
+    });
+  }
+}
+
+function loop(ts = 0) {
+  if (!gameRunning) return;
+  frameId = requestAnimationFrame(loop);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Stars
+  for (const s of stars) {
+    s.y += s.s;
+    if (s.y > canvas.height) s.y = 0;
+    ctx.fillStyle = `rgba(255,255,255,${0.4 + Math.random() * 0.3})`;
+    ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
+  }
+
+  // Move ship
+  if (keys.left && ship.x > 30) ship.x -= ship.speed;
+  if (keys.right && ship.x < canvas.width - 30) ship.x += ship.speed;
+
+  // Auto fire while held
+  if (keys.fire && ts - lastShot > 300) {
+    bullets.push({ x: ship.x, y: ship.y - 20 });
+    lastShot = ts;
+  }
+
+  // Spawn aliens
+  if (ts - lastSpawn > spawnRate) {
+    const type = Math.floor(Math.random() * ALIEN_TYPES.length);
+    const t = ALIEN_TYPES[type];
+    aliens.push({
+      x: t.size + Math.random() * (canvas.width - t.size * 2),
+      y: -t.size,
+      type,
+      hp: level > 3 && type === 1 ? 2 : 1
+    });
+    lastSpawn = ts;
+  }
+
+  // Bullets
+  for (let i = bullets.length - 1; i >= 0; i--) {
+    const b = bullets[i];
+    b.y -= 9;
+    // Glow bullet
+    ctx.shadowBlur = 8; ctx.shadowColor = '#44ffff';
+    ctx.fillStyle = '#44ffff';
+    ctx.fillRect(b.x - 3, b.y - 10, 6, 14);
+    ctx.shadowBlur = 0;
+    if (b.y < -10) { bullets.splice(i, 1); continue; }
+
+    // Hit alien
+    for (let j = aliens.length - 1; j >= 0; j--) {
+      const a = aliens[j];
+      const t = ALIEN_TYPES[a.type];
+      if (Math.abs(b.x - a.x) < t.size && Math.abs(b.y - a.y) < t.size * 0.75) {
+        bullets.splice(i, 1);
+        a.hp--;
+        if (a.hp <= 0) {
+          spawnParticles(a.x, a.y, t.color);
+          score += t.score * level;
+          aliens.splice(j, 1);
+          // Level up every 150 pts
+          const newLevel = Math.floor(score / 150) + 1;
+          if (newLevel > level) {
+            level = newLevel;
+            spawnRate = Math.max(600, 1800 - level * 150);
+            alienSpeed = 1.2 + level * 0.25;
+          }
+          updateHUD();
+        }
+        break;
+      }
+    }
+  }
+
+  // Aliens
+  for (let i = aliens.length - 1; i >= 0; i--) {
+    const a = aliens[i];
+    a.y += alienSpeed;
+    drawAlien(a);
+
+    if (a.y > canvas.height + 30) {
+      aliens.splice(i, 1);
+      lives--;
+      updateHUD();
+      if (lives <= 0) { endGame(); return; }
+    }
+  }
+
+  // Particles
+  for (let i = particles.length - 1; i >= 0; i--) {
+    const p = particles[i];
+    p.x += p.vx; p.y += p.vy;
+    p.life -= 0.04; p.r *= 0.95;
+    if (p.life <= 0) { particles.splice(i, 1); continue; }
+    ctx.globalAlpha = p.life;
+    ctx.fillStyle = p.color;
+    ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+
+  // Ship
+  drawShip(ship.x, ship.y);
+
+  // Ship-alien collision
+  for (let i = aliens.length - 1; i >= 0; i--) {
+    const a = aliens[i];
+    const t = ALIEN_TYPES[a.type];
+    if (Math.abs(a.x - ship.x) < t.size + 18 && Math.abs(a.y - ship.y) < t.size + 18) {
+      spawnParticles(a.x, a.y, t.color);
+      spawnParticles(ship.x, ship.y, '#4488ff');
+      aliens.splice(i, 1);
+      lives--;
+      updateHUD();
+      if (lives <= 0) { endGame(); return; }
+    }
+  }
+}
+
+function endGame() {
+  gameRunning = false;
+  const ov = document.getElementById('overlay');
+  ov.querySelector('h1').textContent = '💥 GAME OVER';
+  document.getElementById('overlay-score').textContent = `Score: ${score}  |  Level: ${level}`;
+  document.getElementById('start-btn').textContent = 'PLAY AGAIN';
+  document.getElementById('hint').textContent = score > 500 ? '🏆 Amazing score!' : score > 200 ? '👍 Good job!' : '🚀 Keep practising!';
+  ov.style.display = 'flex';
+}
+
+// Button controls
+document.getElementById('left-btn').addEventListener('touchstart', e => { e.preventDefault(); keys.left = true; }, { passive: false });
+document.getElementById('left-btn').addEventListener('touchend', () => keys.left = false);
+document.getElementById('right-btn').addEventListener('touchstart', e => { e.preventDefault(); keys.right = true; }, { passive: false });
+document.getElementById('right-btn').addEventListener('touchend', () => keys.right = false);
+document.getElementById('shoot-btn').addEventListener('touchstart', e => { e.preventDefault(); keys.fire = true; }, { passive: false });
+document.getElementById('shoot-btn').addEventListener('touchend', () => keys.fire = false);
+
+// Mouse fallback for desktop
+document.getElementById('left-btn').addEventListener('mousedown', () => keys.left = true);
+document.getElementById('left-btn').addEventListener('mouseup', () => keys.left = false);
+document.getElementById('right-btn').addEventListener('mousedown', () => keys.right = true);
+document.getElementById('right-btn').addEventListener('mouseup', () => keys.right = false);
+document.getElementById('shoot-btn').addEventListener('mousedown', () => keys.fire = true);
+document.getElementById('shoot-btn').addEventListener('mouseup', () => keys.fire = false);
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft') keys.left = true;
+  if (e.key === 'ArrowRight') keys.right = true;
+  if (e.key === ' ' || e.key === 'ArrowUp') keys.fire = true;
+});
+document.addEventListener('keyup', e => {
+  if (e.key === 'ArrowLeft') keys.left = false;
+  if (e.key === 'ArrowRight') keys.right = false;
+  if (e.key === ' ' || e.key === 'ArrowUp') keys.fire = false;
+});
+
+// Drag to move on canvas
+canvas.addEventListener('touchmove', e => {
+  e.preventDefault();
+  const touch = e.touches[0];
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width / rect.width;
+  ship.x = Math.max(30, Math.min(canvas.width - 30, (touch.clientX - rect.left) * scaleX));
+}, { passive: false });
+canvas.addEventListener('touchstart', e => {
+  e.preventDefault();
+  keys.fire = true;
+  const touch = e.touches[0];
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width / rect.width;
+  ship.x = Math.max(30, Math.min(canvas.width - 30, (touch.clientX - rect.left) * scaleX));
+}, { passive: false });
+canvas.addEventListener('touchend', () => keys.fire = false);
+
+document.getElementById('start-btn').addEventListener('click', init);
+document.getElementById('start-btn').addEventListener('touchend', e => { e.preventDefault(); init(); });
+</script>
+</body>
+</html>
