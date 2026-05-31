@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://www.thenaturalhome.co.uk/</loc>
+    <lastmod>2025-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Recipes page -->
+  <url>
+    <loc>https://www.thenaturalhome.co.uk/recipes/</loc>
+    <lastmod>2025-05-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Free PDF guide -->
+  <url>
+    <loc>https://www.thenaturalhome.co.uk/Natural_Home_Recommended_Products.pdf</loc>
+    <lastmod>2025-05-31</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+</urlset>
