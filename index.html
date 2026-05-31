@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-70F5257Y9B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-70F5257Y9B');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Natural Home Collection — by C. Morrison</title>
@@ -43,7 +51,6 @@
     overflow-x: hidden;
   }
 
-  /* Subtle paper grain texture overlay */
   body::before {
     content: "";
     position: fixed; inset: 0;
@@ -61,7 +68,6 @@
   .container { max-width: 1280px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 2; }
   @media (max-width: 720px) { .container { padding: 0 24px; } }
 
-  /* ─────────────────  TYPOGRAPHY  ───────────────── */
   .display {
     font-family: var(--serif);
     font-weight: 400;
@@ -92,7 +98,6 @@
     color: var(--rust);
   }
 
-  /* ─────────────────  NAVIGATION  ───────────────── */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -142,7 +147,6 @@
   .nav-links a:hover::after { width: 100%; }
   @media (max-width: 720px) { .nav-links { display: none; } }
 
-  /* ─────────────────  HERO  ───────────────── */
   .hero {
     padding: 200px 40px 120px;
     position: relative;
@@ -220,7 +224,6 @@
     margin-top: 6px;
   }
 
-  /* Hero illustration — botanical SVG composition */
   .hero-art {
     position: relative;
     aspect-ratio: 4/5;
@@ -283,7 +286,6 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* ─────────────────  PROMISE STRIP  ───────────────── */
   .promise {
     background: var(--ink);
     color: var(--paper);
@@ -315,7 +317,6 @@
     to { transform: translateX(-50%); }
   }
 
-  /* ─────────────────  STORY  ───────────────── */
   .story { padding: 140px 40px; }
   @media (max-width: 720px) { .story { padding: 80px 24px; } }
   .story-grid {
@@ -386,7 +387,6 @@
     transform: rotate(0deg);
   }
 
-  /* ─────────────────  COLLECTION  ───────────────── */
   .collection {
     padding: 140px 40px;
     background: var(--paper-warm);
@@ -529,7 +529,6 @@
   .book:hover .book-cta { color: var(--accent, var(--rust)); }
   .book:hover .book-cta::after { transform: translateX(4px); }
 
-  /* ─────────────────  PHILOSOPHY  ───────────────── */
   .philosophy {
     padding: 160px 40px;
     background: var(--ink);
@@ -589,7 +588,6 @@
     color: rgba(242, 235, 223, 0.7);
   }
 
-  /* ─────────────────  FREE RESOURCE  ───────────────── */
   .resource {
     padding: 140px 40px;
     background: var(--paper);
@@ -688,7 +686,6 @@
     font-style: italic;
   }
 
-  /* Mock PDF preview on the right */
   .pdf-preview {
     position: relative;
     perspective: 1500px;
@@ -728,7 +725,6 @@
     pointer-events: none;
   }
 
-  /* Background pages — peeking out behind */
   .pdf-page-bg-1 {
     transform: translate(12px, 14px) rotateZ(2deg);
     background: var(--paper-warm);
@@ -822,7 +818,6 @@
     margin-top: 4px;
   }
 
-  /* Floating tag */
   .pdf-tag {
     position: absolute;
     top: -16px;
@@ -845,7 +840,6 @@
     letter-spacing: 0;
   }
 
-  /* ─────────────────  TESTIMONIAL  ───────────────── */
   .testimonial {
     padding: 140px 40px;
     background: var(--paper-deep);
@@ -883,7 +877,6 @@
     color: var(--ink-mute);
   }
 
-  /* ─────────────────  CTA  ───────────────── */
   .cta-section {
     padding: 160px 40px;
     text-align: center;
@@ -927,7 +920,6 @@
   }
   .btn-secondary:hover { background: var(--ink); color: var(--paper); }
 
-  /* ─────────────────  FOOTER  ───────────────── */
   footer {
     background: var(--ink);
     color: var(--paper-warm);
@@ -984,7 +976,6 @@
     color: rgba(242, 235, 223, 0.4);
   }
 
-  /* ─────────────────  REVEAL ON SCROLL  ───────────────── */
   .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -998,7 +989,6 @@
 </head>
 <body>
 
-<!-- ─────────  NAV  ───────── -->
 <nav id="nav">
   <div class="nav-inner">
     <a href="#top" class="brand">The Natural <em>Home</em> Collection</a>
@@ -1012,7 +1002,6 @@
   </div>
 </nav>
 
-<!-- ─────────  HERO  ───────── -->
 <section class="hero" id="top">
   <div class="hero-grid">
     <div class="hero-text">
@@ -1049,7 +1038,6 @@
       </div>
       <div class="hero-art-frame">
         <svg class="hero-svg" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-          <!-- Botanical stem composition -->
           <defs>
             <pattern id="grain" patternUnits="userSpaceOnUse" width="4" height="4">
               <rect width="4" height="4" fill="#F2EBDF"/>
@@ -1058,11 +1046,7 @@
             </pattern>
           </defs>
           <rect width="400" height="500" fill="url(#grain)"/>
-
-          <!-- Stem -->
           <path d="M200 460 Q 195 350 205 250 Q 215 140 195 70" stroke="#3F4F33" stroke-width="2" fill="none" stroke-linecap="round"/>
-
-          <!-- Leaves left -->
           <g fill="#6B7F5C" opacity="0.92">
             <path d="M200 380 Q 130 360 105 320 Q 125 340 195 360 Z"/>
             <path d="M203 320 Q 140 295 115 250 Q 138 280 200 305 Z"/>
@@ -1070,8 +1054,6 @@
             <path d="M200 200 Q 145 175 125 135 Q 155 162 198 188 Z"/>
             <path d="M196 140 Q 160 122 145 90 Q 168 110 195 130 Z"/>
           </g>
-
-          <!-- Leaves right -->
           <g fill="#3F4F33" opacity="0.95">
             <path d="M200 410 Q 270 390 295 350 Q 275 372 205 390 Z"/>
             <path d="M203 350 Q 268 325 290 280 Q 268 312 207 335 Z"/>
@@ -1079,8 +1061,6 @@
             <path d="M200 230 Q 256 208 275 168 Q 248 195 200 218 Z"/>
             <path d="M198 170 Q 235 150 250 118 Q 226 138 198 158 Z"/>
           </g>
-
-          <!-- Top flower head -->
           <g transform="translate(195 70)">
             <circle r="14" fill="#A0492D"/>
             <circle r="8" fill="#B9665E"/>
@@ -1094,8 +1074,6 @@
               <ellipse cx="-20" cy="-12" rx="4" ry="10" transform="rotate(-60 -20 -12)"/>
             </g>
           </g>
-
-          <!-- Tiny berries -->
           <g fill="#A0492D">
             <circle cx="290" cy="220" r="3"/>
             <circle cx="296" cy="226" r="3"/>
@@ -1104,8 +1082,6 @@
             <circle cx="121" cy="296" r="3"/>
             <circle cx="113" cy="300" r="3"/>
           </g>
-
-          <!-- Soil base -->
           <path d="M0 490 Q 100 470 200 478 Q 300 486 400 470 L 400 500 L 0 500 Z" fill="#6E2E1A" opacity="0.18"/>
         </svg>
       </div>
@@ -1114,7 +1090,6 @@
   </div>
 </section>
 
-<!-- ─────────  PROMISE STRIP  ───────── -->
 <section class="promise">
   <div class="promise-track">
     <span>No synthetic fragrances</span>
@@ -1128,7 +1103,6 @@
   </div>
 </section>
 
-<!-- ─────────  STORY  ───────── -->
 <section class="story" id="story">
   <div class="story-grid">
     <div class="story-label reveal">
@@ -1149,7 +1123,6 @@
   </div>
 </section>
 
-<!-- ─────────  COLLECTION  ───────── -->
 <section class="collection" id="collection">
   <div class="collection-head">
     <h2 class="display reveal"><em>The</em> Books.</h2>
@@ -1160,7 +1133,6 @@
   </div>
   <div class="books">
 
-    <!-- Book 1 -->
     <article class="book reveal" style="--accent: #6B7F5C; --accent-bg: #E5EBDD;">
       <div class="book-num">— Volume i —</div>
       <div class="book-cover">
@@ -1189,7 +1161,6 @@
       <a href="https://www.amazon.co.uk/dp/B0GX2TV85T?tag=cazza09-21" target="_blank" rel="noopener" class="book-cta">View on Amazon</a>
     </article>
 
-    <!-- Book 2 -->
     <article class="book reveal" style="--accent: #B9665E; --accent-bg: #F5E0DD;">
       <div class="book-num">— Volume ii —</div>
       <div class="book-cover">
@@ -1219,7 +1190,6 @@
       <a href="https://www.amazon.co.uk/dp/B0GX35XZSG?tag=cazza09-21" target="_blank" rel="noopener" class="book-cta">View on Amazon</a>
     </article>
 
-    <!-- Book 3 -->
     <article class="book reveal" style="--accent: #2E6B5E; --accent-bg: #D8E8E2;">
       <div class="book-num">— Volume iii —</div>
       <div class="book-cover">
@@ -1249,7 +1219,6 @@
       <a href="https://www.amazon.co.uk/dp/B0GZL6WXG9?tag=cazza09-21" target="_blank" rel="noopener" class="book-cta">View on Amazon</a>
     </article>
 
-    <!-- Book 4 -->
     <article class="book reveal" style="--accent: #B8893C; --accent-bg: #F0E5CC;">
       <div class="book-num">— Volume iv —</div>
       <div class="book-cover">
@@ -1279,7 +1248,6 @@
       <a href="https://www.amazon.co.uk/dp/B0GZL5GL5N?tag=cazza09-21" target="_blank" rel="noopener" class="book-cta">View on Amazon</a>
     </article>
 
-    <!-- Book 5 -->
     <article class="book reveal" style="--accent: #7B4F2E; --accent-bg: #EBDFD0;">
       <div class="book-num">— Volume v —</div>
       <div class="book-cover">
@@ -1310,7 +1278,6 @@
       <a href="https://www.amazon.co.uk/dp/B0GZL8Z1YZ?tag=cazza09-21" target="_blank" rel="noopener" class="book-cta">View on Amazon</a>
     </article>
 
-    <!-- Bundle card -->
     <article class="book reveal" style="--accent: #A0492D; --accent-bg: #F5E0D5; background: linear-gradient(135deg, #F5E0D5 0%, #FAF6EF 70%); border: 1px solid #A0492D;">
       <div class="book-num" style="color:#6E2E1A;">— Save £4 —</div>
       <div style="position:relative; aspect-ratio:2/3; display:flex; flex-direction:column; align-items:center; justify-content:center; background: var(--paper); border:1px solid var(--line);">
@@ -1331,7 +1298,6 @@
   </div>
 </section>
 
-<!-- ─────────  PHILOSOPHY  ───────── -->
 <section class="philosophy" id="philosophy">
   <div class="philosophy-grid">
     <div class="reveal">
@@ -1363,7 +1329,6 @@
   </div>
 </section>
 
-<!-- ─────────  FREE RESOURCE  ───────── -->
 <section class="resource" id="resource">
   <div class="resource-grid">
     <div class="resource-text reveal">
@@ -1426,7 +1391,6 @@
   </div>
 </section>
 
-<!-- ─────────  TESTIMONIAL  ───────── -->
 <section class="testimonial">
   <div class="testimonial-inner reveal">
     <div class="quote-mark">"</div>
@@ -1435,7 +1399,6 @@
   </div>
 </section>
 
-<!-- ─────────  CTA / SHOP  ───────── -->
 <section class="cta-section" id="shop">
   <div class="reveal">
     <span class="eyebrow">Available now</span>
@@ -1452,7 +1415,6 @@
   </div>
 </section>
 
-<!-- ─────────  FOOTER  ───────── -->
 <footer>
   <div class="footer-inner">
     <div class="footer-grid">
@@ -1497,14 +1459,12 @@
 </footer>
 
 <script>
-  // Nav background on scroll
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 40) nav.classList.add('scrolled');
     else nav.classList.remove('scrolled');
   });
 
-  // Reveal on scroll
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
