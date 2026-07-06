@@ -17,6 +17,14 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Recommended products page -->
+  <url>
+    <loc>https://www.thenaturalhome.co.uk/products.html</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Free PDF guide -->
   <url>
     <loc>https://www.thenaturalhome.co.uk/Natural_Home_Recommended_Products.pdf</loc>
