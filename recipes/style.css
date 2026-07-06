@@ -600,3 +600,12 @@ footer {
 }
 .recipe-card:hover .card-cta { color: var(--accent, var(--rust)); }
 .recipe-card:hover .card-cta::after { transform: translateX(4px); }
+
+.aside-disclosure {
+  margin-top: 28px;
+  font-family: var(--sans);
+  font-size: 12.5px;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--ink-mute);
+}
