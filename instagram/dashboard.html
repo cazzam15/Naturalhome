@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Media Dashboard — The Natural Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:        #1F1B16;
+    --ink-soft:   #4A4339;
+    --ink-mute:   #847A6E;
+    --paper:      #FAF6EF;
+    --paper-warm: #F2EBDF;
+    --paper-deep: #E6DBC8;
+    --rust:       #A0492D;
+    --rust-deep:  #6E2E1A;
+    --sage:       #6B7F5C;
+    --line:       rgba(31,27,22,0.15);
+    --line-soft:  rgba(31,27,22,0.07);
+    --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+    --sans:  'Inter Tight', -apple-system, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ── */
+  header {
+    background: var(--ink);
+    color: var(--paper-warm);
+    padding: 40px 48px 36px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid var(--rust);
+  }
+  .header-inner {
+    max-width: 1360px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .brand-block .eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 6px;
+  }
+  .brand-block h1 {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--paper);
+    line-height: 1;
+  }
+  .brand-block h1 em { font-style: italic; font-weight: 300; color: var(--rust); }
+
+  .header-stats {
+    display: flex;
+    gap: 32px;
+    align-items: flex-end;
+  }
+  .stat { text-align: right; }
+  .stat .num {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 400;
+    color: var(--paper);
+    line-height: 1;
+  }
+  .stat .num.done { color: var(--rust); }
+  .stat .lab {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(242,235,223,0.45);
+    margin-top: 4px;
+  }
+
+  /* Progress bar */
+  .progress-bar {
+    max-width: 1360px;
+    margin: 0 auto;
+    margin-top: 20px;
+    height: 3px;
+    background: rgba(242,235,223,0.12);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--rust);
+    border-radius: 2px;
+    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* ── Filters ── */
+  .filters-bar {
+    padding: 20px 48px;
+    background: var(--paper-warm);
+    border-bottom: 1px solid var(--line-soft);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .filters-bar .label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-right: 4px;
+  }
+  .filter-btn {
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-family: var(--sans);
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .filter-btn:hover { border-color: var(--rust); color: var(--rust); }
+  .filter-btn.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+  /* ── Grid ── */
+  main {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 40px 48px 80px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 28px;
+  }
+
+  /* ── Post card ── */
+  .post-card {
+    background: var(--paper);
+    border: 1px solid var(--line-soft);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    position: relative;
+  }
+  .post-card:hover { transform: translateY(-3px); box-shadow: 0 16px 40px -12px rgba(31,27,22,0.12); }
+  .post-card.posted { opacity: 0.55; }
+  .post-card.posted .post-img-wrap::after {
+    content: "✓ Posted";
+    position: absolute;
+    inset: 0;
+    background: rgba(31,27,22,0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 28px;
+    font-style: italic;
+    color: var(--paper);
+    letter-spacing: 0.04em;
+  }
+  .post-card.hidden { display: none; }
+
+  /* Badge — post number */
+  .post-num-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--ink);
+    color: var(--paper-warm);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    z-index: 2;
+  }
+
+  /* Category label */
+  .post-category {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--rust);
+    color: var(--paper);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    z-index: 2;
+  }
+
+  .post-img-wrap {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: var(--paper-deep);
+  }
+  .post-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .post-card:hover .post-img-wrap img { transform: scale(1.02); }
+
+  .post-body {
+    padding: 20px 22px 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .post-title {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  /* Caption area */
+  .caption-area {
+    position: relative;
+  }
+  .caption-text {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    white-space: pre-wrap;
+    max-height: 130px;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  }
+  .caption-text.expanded {
+    max-height: 1200px;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .expand-btn {
+    background: none;
+    border: none;
+    padding: 4px 0;
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rust);
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .expand-btn:hover { opacity: 0.7; }
+
+  /* Hashtags */
+  .hashtags {
+    font-size: 12px;
+    color: var(--rust);
+    opacity: 0.75;
+    line-height: 1.8;
+    word-break: break-word;
+  }
+
+  /* Actions row */
+  .post-actions {
+    padding: 14px 22px 18px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    border-top: 1px solid var(--line-soft);
+    margin-top: auto;
+  }
+  .btn {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    cursor: pointer;
+    border: 1px solid;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .btn-copy {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+    flex: 1;
+  }
+  .btn-copy:hover { background: var(--rust); border-color: var(--rust); }
+  .btn-copy.copied {
+    background: var(--sage);
+    border-color: var(--sage);
+  }
+  .btn-posted {
+    background: transparent;
+    color: var(--ink-soft);
+    border-color: var(--line);
+    flex-shrink: 0;
+  }
+  .btn-posted:hover { border-color: var(--rust); color: var(--rust); }
+  .post-card.posted .btn-posted {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  /* ── Empty state ── */
+  .empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 80px 0;
+    display: none;
+  }
+  .empty-state.visible { display: block; }
+  .empty-state p {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-style: italic;
+    color: var(--ink-mute);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 720px) {
+    header { padding: 28px 24px 24px; }
+    .filters-bar, main { padding-left: 24px; padding-right: 24px; }
+    .grid { grid-template-columns: 1fr; gap: 20px; }
+    .header-stats { gap: 20px; }
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--ink);
+    color: var(--paper-warm);
+    padding: 12px 28px;
+    font-family: var(--serif);
+    font-size: 16px;
+    font-style: italic;
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+    z-index: 200;
+    white-space: nowrap;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header>
+  <div class="header-inner">
+    <div class="brand-block">
+      <div class="eyebrow">@naturalhomelivinguk</div>
+      <h1>Social Media <em>Dashboard</em></h1>
+    </div>
+    <div class="header-stats">
+      <div class="stat">
+        <div class="num" id="stat-total">12</div>
+        <div class="lab">Total Posts</div>
+      </div>
+      <div class="stat">
+        <div class="num done" id="stat-posted">0</div>
+        <div class="lab">Posted</div>
+      </div>
+      <div class="stat">
+        <div class="num" id="stat-remaining">12</div>
+        <div class="lab">Remaining</div>
+      </div>
+    </div>
+  </div>
+  <div class="header-inner">
+    <div class="progress-bar" style="flex:1">
+      <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+    </div>
+  </div>
+</header>
+
+<!-- ── Filters ── -->
+<div class="filters-bar">
+  <span class="label">Show</span>
+  <button class="filter-btn active" data-filter="all">All (12)</button>
+  <button class="filter-btn" data-filter="pending">Not posted</button>
+  <button class="filter-btn" data-filter="posted">Posted</button>
+  <button class="filter-btn" data-filter="brand">Brand Posts</button>
+  <button class="filter-btn" data-filter="recipe">Recipes</button>
+</div>
+
+<!-- ── Grid ── -->
+<main>
+  <div class="grid" id="posts-grid">
+
+    <!-- POST 01 — Brand Launch -->
+    <div class="post-card" data-id="01" data-category="brand">
+      <div class="post-num-badge">01</div>
+      <div class="post-category">Brand</div>
+      <div class="post-img-wrap">
+        <img src="01-launch.png" alt="Brand Launch post">
+      </div>
+      <div class="post-body">
+        <div class="post-title">Brand Launch</div>
+        <div class="caption-area">
+          <div class="caption-text" id="caption-01">Slow living, plainly written.
+
+Five practical handbooks for a calmer, more natural home — natural cleaning, beauty, kitchen, herbal remedies, and pet care. No fads, no wellness jargon. Just recipes that work, tested in a real UK kitchen.
+
+The complete series is £20 on Kindle. Or start with whichever one fits your life right now.
+
+Link in bio → thenaturalhome.co.uk</div>
+          <button class="expand-btn" onclick="toggleCaption('01', this)">Read more ↓</button>
+          <div class="hashtags">#naturalhome #slowliving #naturalliving #ecohome #greenclean #naturalbeauty #zerowaste #herbalremedies #naturalremedies #ukblogger #slowlivinguk #sustainableliving #naturalhomeuk #plantbased #homemade #diynaturalcleaning #consciousliving #kinderhome #botanicallife</div>
+        </div>
+      </div>
+      <div class="post-actions">
+        <button class="btn btn-copy" onclick="copyCaption('01', this)">Copy Caption</button>
+        <button class="btn btn-posted" onclick="togglePosted('01')">Mark Posted</button>
+      </div>
+    </div>
+
+    <!-- POST 02 — Green Clean -->
+    <div class="post-card" data-id="02" data-category="brand">
+      <div class="post-num-badge">02</div>
+      <div class="post-category">Brand</div>
+      <div class="post-img-wrap">
+        <img src="02-green-clean.png" alt="The Green Clean Handbook">
+      </div>
+      <div class="post-body">
+        <div class="post-title">The Green Clean Handbook</div>
+        <div class="caption-area">
+          <div class="caption-text" id="caption-02">Your cleaning cupboard is full of things you'd never knowingly choose.
+
+The Green Clean Handbook replaces every shop-bought spray with seven simple ingredients — bicarbonate of soda, white vinegar, castile soap, lemon, tea tree, lavender, and water. That's it.
+
+38 recipes covering every room in the house. Oven cleaner, laundry powder, mould spray, glass cleaner, fabric softener. All for pence, not pounds.
+
+£3.99 on Kindle. Link in bio.</div>
+          <button class="expand-btn" onclick="toggleCaption('02', this)">Read more ↓</button>
+          <div class="hashtags">#greenclean #naturalcleaning #ecofriendlycleaning #diycleaningproducts #bicarbonateofsoda #nontoxiccleaning #cleaningwithoutchemicals #sustainablehome #zerowastecleaning #naturalcleaninguk #slowliving #homemade #greenliving #chemicalfree #ukblogger</div>
+        </div>
+      </div>
+      <div class="post-actions">
+        <button class="btn btn-copy" onclick="copyCaption('02', this)">Copy Caption</button>
+        <button class="btn btn-posted" onclick="togglePosted('02')">Mark Posted</button>
+      </div>
+    </div>
+
+    <!-- POST 03 — Natural Beauty -->
+    <div class="post-card" data-id="03" data-category="brand">
+      <div class="post-num-badge">03</div>
+      <div class="post-category">Brand</div>
+      <div class="post-img-wrap">
+        <img src="03-natural-beauty.png" alt="The Natural Beauty Handbook">
+      </div>
+      <div class="post-body">
+        <div class="post-title">The Natural Beauty Handbook</div>
+        <div class="caption-area">
+          <div class="caption-text" id="caption-03">You don't need forty-seven ingredients to have good skin.
+
+The Natural Beauty Handbook is 32 recipes for skincare, hair, body, lips, and bath — built from oils, butters, clays, and the plants that have been trusted for centuries. Beeswax, shea, rose hip, oat, honey, argan.
+
+No synthetic fragrances. No preservatives you can't pronounce. No £40 serums.
+
+£3.99 on Kindle. Link in bio.</div>
+          <button class="expand-btn" onclick="toggleCaption('03', this)">Read more ↓</button>
+          <div class="hashtags">#naturalbeauty #diyskincare #naturalskincareuk #homemadebeauty #cleanbeauty #naturalskincare #diybeauty #skincarerecipes #plantbasedskincare #slowbeauty #greenbeauty #naturalhair #ukblogger #handmadecosmetics #botanicalbeauty</div>
+        </div>
+      </div>
+      <div class="post-actions">
+        <button class="btn btn-copy" onclick="copyCaption('03', this)">Copy Caption</button>
+        <button class="btn btn-posted" onclick="togglePosted('03')">Mark Posted</button>
+      </div>
+    </div>
+
+    <!-- POST 04 — Zero-Waste Kitchen -->
+    <div class="post-card" data-id="04" data-category="brand">
+      <div class="post-num-badge">04</div>
+      <div class="post-category">Brand</div>
+      <div class="post-img-wrap">
+        <img src="04-zero-waste.png" alt="The Zero-Waste Kitchen">
+      </div>
+      <div class="post-body">
+        <div class="post-title">The Zero-Waste Kitchen</div>
+        <div class="caption-area">
+          <div class="caption-text" id="caption-04">The average UK household throws away £800 worth of food every year.
+
+The Zero-Waste Kitchen is 30 recipes built from what usually gets binned — vegetable peelings, bread crusts, citrus rinds, wilting herbs, yesterday's rice. Carrot top pesto. Rind marmalade. Stock from the bits you'd normally compost. Aquafaba meringues.
+
+Less waste. Less money. Better food.
+
+£3.99 on Kindle. Link in bio.</div>
+          <button class="expand-btn" onclick="toggleCaption('04', this)">Read more ↓</button>
+          <div class="hashtags">#zerowaste #zerowastekitchen #foodwaste #reducewaste #sustainablecooking #zerowastecooking #ukrecipes #sustainablefood #lesswaste #composting #diyrecipes #planetfriendly #zerowasteliving #foodscraps #sustainableuk</div>
+        </div>
+      </div>
+      <div class="post-actions">
+        <button class="btn btn-copy" onclick="copyCaption('04', this)">Copy Caption</button>
+        <button class="btn btn-posted" onclick="togglePosted('04')">Mark Posted</button>
+      </div>
+    </div>
+
+    <!-- POST 05 — Herbal Remedies -->
+    <div class="post-card" data-id="05" data-category="brand">
+      <div class="post-num-badge">05</div>
+      <div class="post-category">Brand</div>
+      <div class="post-img-wrap">
+        <img src="05-herbal-remedies.png" alt="Natural Herbal Remedies at Home">
+      </div>
+      <div class="post-body">
+        <div class="post-title">Natural Herbal Remedies at Home</div>
+        <div class="caption-area">
+          <div class="caption-text" id="caption-05">Your grandmother probably knew most of these.
+
+Natural Herbal Remedies at Home is 35 recipes for teas, tinctures, syrups, salves, and compresses — built from plants you can grow on a windowsill or buy by the gram from any health food shop. Elderberry immune syrup. Lavender sleep balm. Ginger and lemon cold tea. Calendula healing salve.
+
+Every remedy is honest about what it can and can't do. No miracle claims.
+
+£3.99 on Kindle. Link in bio.</div>
+          <button class="expand-btn" onclick="toggleCaption('05', this)">Read more ↓</button>
+          <div class="hashtags">#herbalremedies #naturalremedies #herbalismuk #plantmedicine #homeherbs #herbalism #naturalwellness #herbalhealing #plantbased #homeopathy #ukwellness #slowliving #botanicalmedicine #diyherbs #herbalgarden</div>
+        </div>
+      </div>
+      <div class="post-actions">
+        <button class="btn btn-copy" onclick="copyCaption('05', this)">Copy Caption</button>
+        <button class="btn btn-posted" onclick="togglePosted('05')">Mark Posted</button>
+      </div>
+    </div>
+
+    <!-- POST 06 — Pet Care -->
+    <div class="post-card" data-id="06" data-category="brand">
+      <div class="post-num-badge">06</div>
+      <div class="post-category">Brand</div>
+      <div class="post-img-wrap">
+        <img src="06-pet-care.png" alt="Natural Pet Care at Home">
+      </div>
+      <div class="post-body">
+        <div class="post-title">Natural Pet Care at Home</div>
+        <div class="caption-area">
+          <div class="caption-text" id="caption-06">Your pets live in the same home. They deserve the same care.
+
+Natural Pet Care at Home is 30 recipes for chemical-free grooming, honest natural flea control, and gentle remedies for dogs and cats. Paw balm for winter grit. Oat shampoo for itchy skin. Chamomile compress for sore eyes. Lavender linen spray for their bedding.
+
+Every recipe is vet-cautioned. Nothing that could hurt.
+
+£3.99 on Kindle. Link in bio.</div>
+          <button class="expand-btn" onclick="toggleCaption('06', this)">Read more ↓</button>
+          <div class="hashtags">#naturalpetcare #dogcare #catcare #naturaldog #naturalcat #petgrooming #diydog #petcare #dogowner #catowner #naturalpets #chemicalfreepet #pawbalm #petrecipes #ukpetowner</div>
+        </div>
+      </div>
+      <div class="post-actions">
+        <button class="btn btn-copy" onclick="copyCaption('06', this)">Copy Caption</button>
+        <button class="btn btn-posted" onclick="togglePosted('06')">Mark Posted</button>
+      </div>
+    </div>
+
+    <!-- POST 07 — All-Purpose Spray -->
+    <div class="post-card" data-id="07" data-category="recipe">
+      <div class="post-num-badge">07</div>
+      <div class="post-category">Recipe</div>
+      <div class="post-img-wrap">
+        <img src="07-recipe-spray.png" alt="All-Purpose Spray recipe">
+      </div>
+      <div class="post-body">
+        <div class="post-title">Recipe: Bicarbonate All-Purpose Spray</div>
+        <div class="caption-area">
+          <div class="caption-text" id="caption-07">This one recipe will replace five things under your sink.
+
+Four ingredients. Five minutes. Costs about 30p per bottle.
+
+→ 250ml warm water
+→ 1 tbsp bicarbonate of soda
+→ 250ml white distilled vinegar
+→ 10 drops tea tree or lemon essential oil
+
+Swirl, fizz, combine. Works on kitchen worktops, bathrooms, glass, tiles — everything except natural stone and untreated wood.
+
+Full recipe at thenaturalhome.co.uk (link in bio) — free, no sign-up.</div>
+          <button class="expand-btn" onclick="toggleCaption('07', this)">Read more ↓</button>
+          <div class="hashtags">#naturalcleaning #greenclean #allpurposecleaner #diycleaner #bicarbonateofsoda #naturalcleaningrecipe #ecofriendlycleaning #chemicalfree #nontoxichome #cleaninghacks #sustainablelifestyle #homemadecleaner #ukblogger #slowliving #zerowastecleaning</div>
+        </div>
+      </div>
+      <div class="post-actions">
+        <button class="btn btn-copy" onclick="copyCaption('07', this)">Copy Caption</button>
+        <button class="btn btn-posted" onclick="togglePosted('07')">Mark Posted</button>
+      </div>
+    </div>
+
+    <!-- POST 08 — Lip Balm -->
+    <div class="post-card" data-id="08" data-category="recipe">
+      <div class="post-num-badge">08</div>
+      <div class="post-category">Recipe</div>
+      <div class="post-img-wrap">
+        <img src="08-recipe-lipbalm.png" alt="Lip Balm recipe">
+      </div>
+      <div class="post-body">
+        <div class="post-title">Recipe: Four-Ingredient Lip Balm</div>
+        <div class="caption-area">
+          <div class="caption-text" id="caption-08">Ten minutes. Makes six tins. Lasts six months.
+
+→ 2 tbsp beeswax pellets
+→ 2 tbsp shea butter
+→ 1 tbsp sweet almond oil
+→ ½ tsp raw honey
+
+Melt together in a bain-marie, pour into tins, done. You'll never pay £4 for a small tin of Carmex again.
+
+Full recipe at thenaturalhome.co.uk (link in bio) — free, no sign-up.</div>
+          <button class="expand-btn" onclick="toggleCaption('08', this)">Read more ↓</button>
+          <div class="hashtags">#lipbalm #diylipbalm #naturalbeauty #homemadebeauty #beeswax #sheabutter #naturalskincare #diyskincare #cleanbeauty #naturallipcare #plantbasedskincare #handmadebeauty #greenbeauty #ukblogger #slowbeauty</div>
+        </div>
+      </div>
+      <div class="post-actions">
+        <button class="btn btn-copy" onclick="copyCaption('08', this)">Copy Caption</button>
+        <button class="btn btn-posted" onclick="togglePosted('08')">Mark Posted</button>
+      </div>
+    </div>
+
+    <!-- POST 09 — Carrot Top Pesto -->
+    <div class="post-card" data-id="09" data-category="recipe">
+      <div class="post-num-badge">09</div>
+      <div class="post-category">Recipe</div>
+      <div class="post-img-wrap">
+        <img src="09-recipe-pesto.png" alt="Carrot Top Pesto recipe">
+      </div>
+      <div class="post-body">
+        <div class="post-title">Recipe: Carrot Top Pesto</div>
+        <div class="caption-area">
+          <div class="caption-text" id="caption-09">The leafy bits everyone puts straight in the bin.
+
+→ Tops from 1 bunch of carrots
+→ 1 small garlic clove
+→ 30g parmesan
+→ 50ml olive oil
+→ Squeeze of lemon
+
+Blitz. Taste. Adjust. It's punchier than basil, faintly bitter in the best possible way, and completely free if you were going to buy carrots anyway.
+
+Good on pasta, toast, roasted veg, or straight off a spoon.
+
+Full recipe at thenaturalhome.co.uk (link in bio) — free, no sign-up.</div>
+          <button class="expand-btn" onclick="toggleCaption('09', this)">Read more ↓</button>
+          <div class="hashtags">#zerowaste #zerowastecooking #carrottoppesto #foodwaste #carrottops #pesto #sustainablecooking #noscrapleftbehind #sustainablefood #veggiewaste #ukrecipes #plantbased #reducewaste #zerowastefood #sustainableuk</div>
+        </div>
+      </div>
+      <div class="post-actions">
+        <button class="btn btn-copy" onclick="copyCaption('09', this)">Copy Caption</button>
+        <button class="btn btn-posted" onclick="togglePosted('09')">Mark Posted</button>
+      </div>
+    </div>
+
+    <!-- POST 10 — Elderberry Syrup -->
+    <div class="post-card" data-id="10" data-category="recipe">
+      <div class="post-num-badge">10</div>
+      <div class="post-category">Recipe</div>
+      <div class="post-img-wrap">
+        <img src="10-recipe-elderberry.png" alt="Elderberry Immune Syrup recipe">
+      </div>
+      <div class="post-body">
+        <div class="post-title">Recipe: Elderberry Immune Syrup</div>
+        <div class="caption-area">
+          <div class="caption-text" id="caption-10">A batch costs about £2. It lasts the winter.
+
+→ 100g dried elderberries
+→ 600ml water
+→ 2 cloves
+→ 1 tsp fresh grated ginger
+→ 3 tbsp raw honey (added off the heat)
+
+Simmer for 20 minutes until reduced by half. Strain. Cool. Stir in honey. Store in the fridge for up to 8 weeks.
+
+One tablespoon a day when you feel something coming on. No promises — but plenty of tradition behind it.
+
+Full recipe at thenaturalhome.co.uk (link in bio) — free, no sign-up.</div>
+          <button class="expand-btn" onclick="toggleCaption('10', this)">Read more ↓</button>
+          <div class="hashtags">#elderberry #elderberrysyrup #herbalremedies #naturalimmunity #naturalremedies #herbalism #immunesupport #winterwellness #diyherbs #elderberries #plantmedicine #naturalwellness #ukherbs #slowliving #herbalismuk</div>
+        </div>
+      </div>
+      <div class="post-actions">
+        <button class="btn btn-copy" onclick="copyCaption('10', this)">Copy Caption</button>
+        <button class="btn btn-posted" onclick="togglePosted('10')">Mark Posted</button>
+      </div>
+    </div>
+
+    <!-- POST 11 — Winter Paw Balm -->
+    <div class="post-card" data-id="11" data-category="recipe">
+      <div class="post-num-badge">11</div>
+      <div class="post-category">Recipe</div>
+      <div class="post-img-wrap">
+        <img src="11-recipe-pawbalm.png" alt="Winter Paw Balm recipe">
+      </div>
+      <div class="post-body">
+        <div class="post-title">Recipe: Winter Paw Balm</div>
+        <div class="caption-area">
+          <div class="caption-text" id="caption-11">Salt, grit, and frozen pavements are hard on paw pads.
+
+→ 2 tbsp beeswax pellets
+→ 1 tbsp shea butter
+→ 1 tbsp coconut oil
+→ 1 tbsp calendula-infused oil
+
+Melt together, pour into a small tin, cool. Apply a little to paw pads before walks in cold weather. Completely lick-safe.
+
+Fifteen minutes, makes enough for a whole season.
+
+Full recipe at thenaturalhome.co.uk (link in bio) — free, no sign-up.</div>
+          <button class="expand-btn" onclick="toggleCaption('11', this)">Read more ↓</button>
+          <div class="hashtags">#pawbalm #naturalpetcare #dogcare #winterdog #diydogcare #naturaldoggrooming #pawcare #doggrooming #chemicalfree #petcare #beeswax #dogowner #ukdog #naturaldog #dogwellness</div>
+        </div>
+      </div>
+      <div class="post-actions">
+        <button class="btn btn-copy" onclick="copyCaption('11', this)">Copy Caption</button>
+        <button class="btn btn-posted" onclick="togglePosted('11')">Mark Posted</button>
+      </div>
+    </div>
+
+    <!-- POST 12 — Free Companion Guide -->
+    <div class="post-card" data-id="12" data-category="brand">
+      <div class="post-num-badge">12</div>
+      <div class="post-category">Brand</div>
+      <div class="post-img-wrap">
+        <img src="12-free-guide.png" alt="Free Companion Guide post">
+      </div>
+      <div class="post-body">
+        <div class="post-title">Free Companion Guide</div>
+        <div class="caption-area">
+          <div class="caption-text" id="caption-12">Every ingredient from all five handbooks. One place. Free.
+
+The Natural Home Recommended Products List is a 20-page PDF companion guide with 146 considered products across 12 categories — from bicarbonate of soda to dried elderberries to compostable poo bags. Each entry shows which book uses it and links directly to Amazon UK.
+
+No sign-up. No email list. Just download and keep it.
+
+Find it at thenaturalhome.co.uk (link in bio).</div>
+          <button class="expand-btn" onclick="toggleCaption('12', this)">Read more ↓</button>
+          <div class="hashtags">#freedownload #naturalhome #naturalcleaning #naturalbeauty #zerowaste #herbalremedies #naturalpetcare #slowliving #sustainableliving #ecohome #naturalliving #greenliving #resourcelist #ukblogger #naturalhomeuk</div>
+        </div>
+      </div>
+      <div class="post-actions">
+        <button class="btn btn-copy" onclick="copyCaption('12', this)">Copy Caption</button>
+        <button class="btn btn-posted" onclick="togglePosted('12')">Mark Posted</button>
+      </div>
+    </div>
+
+    <div class="empty-state" id="empty-state">
+      <p>No posts match this filter.</p>
+    </div>
+
+  </div>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  const STORAGE_KEY = 'nh-posted-posts';
+
+  // ── State ──────────────────────────────────────────────────────────
+  function getPosted() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+    catch { return []; }
+  }
+  function savePosted(arr) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+  }
+
+  // ── Init ───────────────────────────────────────────────────────────
+  function init() {
+    const posted = getPosted();
+    posted.forEach(id => {
+      const card = document.querySelector(`.post-card[data-id="${id}"]`);
+      if (card) card.classList.add('posted');
+    });
+    updateStats();
+  }
+
+  // ── Toggle posted ──────────────────────────────────────────────────
+  function togglePosted(id) {
+    const card = document.querySelector(`.post-card[data-id="${id}"]`);
+    const posted = getPosted();
+    const idx = posted.indexOf(id);
+    if (idx === -1) {
+      posted.push(id);
+      card.classList.add('posted');
+      showToast('Marked as posted ✓');
+    } else {
+      posted.splice(idx, 1);
+      card.classList.remove('posted');
+      showToast('Unmarked');
+    }
+    savePosted(posted);
+    updateStats();
+    applyFilter(document.querySelector('.filter-btn.active').dataset.filter);
+  }
+
+  // ── Copy caption ───────────────────────────────────────────────────
+  function copyCaption(id, btn) {
+    const captionEl = document.getElementById(`caption-${id}`);
+    const hashtagEl = captionEl.closest('.caption-area').querySelector('.hashtags');
+    const text = captionEl.textContent.trim() + '\n\n' + hashtagEl.textContent.trim();
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'Copied ✓';
+      btn.classList.add('copied');
+      showToast('Caption copied to clipboard');
+      setTimeout(() => {
+        btn.textContent = 'Copy Caption';
+        btn.classList.remove('copied');
+      }, 2200);
+    }).catch(() => {
+      // Fallback for older browsers
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      btn.textContent = 'Copied ✓';
+      btn.classList.add('copied');
+      showToast('Caption copied to clipboard');
+      setTimeout(() => {
+        btn.textContent = 'Copy Caption';
+        btn.classList.remove('copied');
+      }, 2200);
+    });
+  }
+
+  // ── Expand caption ─────────────────────────────────────────────────
+  function toggleCaption(id, btn) {
+    const el = document.getElementById(`caption-${id}`);
+    const expanded = el.classList.toggle('expanded');
+    btn.textContent = expanded ? 'Show less ↑' : 'Read more ↓';
+  }
+
+  // ── Stats ──────────────────────────────────────────────────────────
+  function updateStats() {
+    const posted = getPosted();
+    const total = 12;
+    const done = posted.length;
+    document.getElementById('stat-total').textContent = total;
+    document.getElementById('stat-posted').textContent = done;
+    document.getElementById('stat-remaining').textContent = total - done;
+    document.getElementById('progress-fill').style.width = `${(done / total) * 100}%`;
+  }
+
+  // ── Filter ─────────────────────────────────────────────────────────
+  function applyFilter(filter) {
+    const posted = getPosted();
+    const cards = document.querySelectorAll('.post-card');
+    let visible = 0;
+    cards.forEach(card => {
+      const id = card.dataset.id;
+      const cat = card.dataset.category;
+      const isPosted = posted.includes(id);
+      let show = false;
+      if (filter === 'all') show = true;
+      else if (filter === 'pending') show = !isPosted;
+      else if (filter === 'posted') show = isPosted;
+      else if (filter === 'brand') show = cat === 'brand';
+      else if (filter === 'recipe') show = cat === 'recipe';
+      card.classList.toggle('hidden', !show);
+      if (show) visible++;
+    });
+    const emptyState = document.getElementById('empty-state');
+    emptyState.classList.toggle('visible', visible === 0);
+  }
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilter(btn.dataset.filter);
+    });
+  });
+
+  // ── Toast ──────────────────────────────────────────────────────────
+  let toastTimer;
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 2000);
+  }
+
+  init();
+</script>
+</body>
+</html>
