@@ -65,7 +65,7 @@ def footer(draw, accent=RUST):
     cx(draw, "The Natural Home Collection", SIZE-58, fnt_b, PAPER_WARM)
     # handle bottom-right
     fnt_s = font(JURA_L, 16)
-    draw.text((SIZE-290, SIZE-30), "@naturalhomelivinguk", font=fnt_s, fill=(200,190,178))
+    draw.text((SIZE-290, SIZE-30), "@thenaturalhomeuk", font=fnt_s, fill=(200,190,178))
 
 def ornament(draw, x, y, size=28, fill=RUST):
     fnt = font(ITALIANA, size)
