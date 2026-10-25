@@ -62,7 +62,7 @@ Less waste. Less money. Better food.
 
 Your grandmother probably knew most of these.
 
-Natural Herbal Remedies at Home is 35 recipes for teas, tinctures, syrups, salves, and compresses — built from plants you can grow on a windowsill or buy by the gram from any health food shop. Elderberry immune syrup. Lavender sleep balm. Ginger and lemon cold tea. Calendula healing salve.
+Natural Herbal Remedies at Home is 27 recipes for teas, tinctures, syrups, salves, and compresses — built from plants you can grow on a windowsill or buy by the gram from any health food shop. Elderberry immune syrup. Lavender sleep balm. Ginger and lemon cold tea. Calendula healing salve.
 
 Every remedy is honest about what it can and can't do. No miracle claims.
 
