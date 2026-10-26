@@ -3,7 +3,7 @@
 
   <!-- Homepage -->
   <url>
-    <loc>https://www.thenaturalhome.co.uk/</loc>
+    <loc>https://thenaturalhome.co.uk/</loc>
     <lastmod>2025-05-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
@@ -11,23 +11,23 @@
 
   <!-- Recipes index -->
   <url>
-    <loc>https://www.thenaturalhome.co.uk/recipes/</loc>
-    <lastmod>2025-05-31</lastmod>
+    <loc>https://thenaturalhome.co.uk/recipes/</loc>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Recommended products page -->
   <url>
-    <loc>https://www.thenaturalhome.co.uk/products.html</loc>
-    <lastmod>2026-07-06</lastmod>
+    <loc>https://thenaturalhome.co.uk/products.html</loc>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Free PDF guide -->
   <url>
-    <loc>https://www.thenaturalhome.co.uk/Natural_Home_Recommended_Products.pdf</loc>
+    <loc>https://thenaturalhome.co.uk/Natural_Home_Recommended_Products.pdf</loc>
     <lastmod>2025-05-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
@@ -35,61 +35,61 @@
 
   <!-- Recipe pages — Pet Care -->
   <url>
-    <loc>https://www.thenaturalhome.co.uk/recipes/pet-care-paw-balm.html</loc>
-    <lastmod>2025-05-31</lastmod>
+    <loc>https://thenaturalhome.co.uk/recipes/pet-care-paw-balm.html</loc>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.thenaturalhome.co.uk/recipes/pet-care-oatmeal-shampoo.html</loc>
-    <lastmod>2025-05-31</lastmod>
+    <loc>https://thenaturalhome.co.uk/recipes/pet-care-oatmeal-shampoo.html</loc>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.thenaturalhome.co.uk/recipes/pet-care-ear-cleaner.html</loc>
-    <lastmod>2025-05-31</lastmod>
+    <loc>https://thenaturalhome.co.uk/recipes/pet-care-ear-cleaner.html</loc>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Recipe pages — Natural Beauty -->
   <url>
-    <loc>https://www.thenaturalhome.co.uk/recipes/natural-beauty-lip-balm.html</loc>
-    <lastmod>2025-05-31</lastmod>
+    <loc>https://thenaturalhome.co.uk/recipes/natural-beauty-lip-balm.html</loc>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.thenaturalhome.co.uk/recipes/natural-beauty-face-oil.html</loc>
-    <lastmod>2025-05-31</lastmod>
+    <loc>https://thenaturalhome.co.uk/recipes/natural-beauty-face-oil.html</loc>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Recipe pages — Green Clean -->
   <url>
-    <loc>https://www.thenaturalhome.co.uk/recipes/green-clean-all-purpose-spray.html</loc>
-    <lastmod>2025-05-31</lastmod>
+    <loc>https://thenaturalhome.co.uk/recipes/green-clean-all-purpose-spray.html</loc>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Recipe pages — Zero-Waste Kitchen -->
   <url>
-    <loc>https://www.thenaturalhome.co.uk/recipes/zero-waste-carrot-top-pesto.html</loc>
-    <lastmod>2025-05-31</lastmod>
+    <loc>https://thenaturalhome.co.uk/recipes/zero-waste-carrot-top-pesto.html</loc>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Recipe pages — Herbal Remedies -->
   <url>
-    <loc>https://www.thenaturalhome.co.uk/recipes/herbal-elderberry-syrup.html</loc>
-    <lastmod>2025-05-31</lastmod>
+    <loc>https://thenaturalhome.co.uk/recipes/herbal-elderberry-syrup.html</loc>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
