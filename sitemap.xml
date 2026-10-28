@@ -12,7 +12,7 @@
   <!-- Recipes index -->
   <url>
     <loc>https://thenaturalhome.co.uk/recipes/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -74,6 +74,12 @@
   <url>
     <loc>https://thenaturalhome.co.uk/recipes/green-clean-all-purpose-spray.html</loc>
     <lastmod>2026-10-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thenaturalhome.co.uk/recipes/green-clean-oven-cleaner.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
