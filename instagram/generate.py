@@ -423,9 +423,9 @@ def recipe_post(filename, vol_tag, title, hook, ingredients, accent):
 def post_07():
     recipe_post("07-recipe-spray.png",
                 "Free Recipe · Vol. I  Green Clean",
-                "Bicarbonate All-Purpose Spray",
-                "Replaces 5 cleaning products. Costs 30p. Takes 5 minutes.",
-                ["Bicarbonate of soda", "White vinegar", "Essential oil", "Warm water"],
+                "Natural All-Purpose Spray",
+                "Two minutes. About 8p a bottle. Keeps 3 months.",
+                ["Water", "White vinegar", "Lemon essential oil", "Tea tree essential oil"],
                 SAGE)
 
 def post_08():

@@ -86,22 +86,22 @@ Every recipe is vet-cautioned. Nothing that could hurt.
 
 ---
 
-## 07 — Recipe: Bicarbonate All-Purpose Spray
+## 07 — Recipe: Natural All-Purpose Spray
 
-This one recipe will replace five things under your sink.
+One simple spray for everyday cleaning.
 
-Four ingredients. Five minutes. Costs about 30p per bottle.
+Four ingredients. Two minutes. Costs about 8p a bottle.
 
-→ 250ml warm water
-→ 1 tbsp bicarbonate of soda
-→ 250ml white distilled vinegar
-→ 10 drops tea tree or lemon essential oil
+→ 500ml water
+→ 100ml white vinegar
+→ 10 drops lemon essential oil
+→ 5 drops tea tree essential oil
 
-Swirl, fizz, combine. Works on kitchen worktops, bathrooms, glass, tiles — everything except natural stone and untreated wood.
+Combine, shake gently, spray, leave 30 seconds, wipe with a microfibre cloth. Not on natural stone, waxed or oiled wood, cast iron or aluminium, and never mix with bleach. Ventilate, and keep essential-oil sprays away from cats and other pets.
 
 Full recipe at thenaturalhome.co.uk (link in bio) — free, no sign-up.
 
-#naturalcleaning #greenclean #allpurposecleaner #diycleaner #bicarbonateofsoda #naturalcleaningrecipe #ecofriendlycleaning #chemicalfree #nontoxichome #cleaninghacks #sustainablelifestyle #homemadecleaner #ukblogger #slowliving #zerowastecleaning
+#naturalcleaning #greenclean #allpurposecleaner #diycleaner #vinegarcleaning #naturalcleaningrecipe #ecofriendlycleaning #chemicalfree #nontoxichome #cleaninghacks #sustainablelifestyle #homemadecleaner #ukblogger #slowliving #zerowastecleaning
 
 ---
 
