@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<script defer src="/analytics.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — The Natural Home Collection</title>
+<meta name="description" content="How The Natural Home Collection website uses analytics, cookies and Amazon affiliate links.">
+<link rel="canonical" href="https://thenaturalhome.co.uk/privacy.html">
+<meta property="og:title" content="Privacy Policy — The Natural Home Collection">
+<meta property="og:description" content="Analytics, cookies and affiliate links on thenaturalhome.co.uk.">
+<meta property="og:type" content="website">
+<meta name="robots" content="noindex, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="recipes/style.css">
+<style>
+  .doc { max-width: 720px; margin: 0 auto; padding: 140px 32px 72px; font-family: var(--sans); color: var(--ink-soft); font-size: 16px; line-height: 1.7; }
+  .doc h1 { margin-bottom: 8px; }
+  .doc .updated { font-size: 13px; color: var(--ink-mute); margin-bottom: 32px; }
+  .doc h2 { font-family: var(--serif); font-weight: 500; font-size: 26px; color: var(--ink); margin: 36px 0 10px; }
+  .doc p, .doc ul { margin: 0 0 14px; }
+  .doc ul { padding-left: 1.2em; }
+  .doc a { color: var(--rust); }
+  .doc code { font-size: 14px; }
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">The Natural <em>Home</em> Collection</a>
+    <div class="nav-links">
+      <a href="index.html#story">Story</a>
+      <a href="index.html#collection">The Books</a>
+      <a href="recipes/">Recipes</a>
+      <a href="products.html">Products</a>
+    </div>
+  </div>
+</nav>
+<main class="doc">
+  <h1 class="display">Privacy <em>Policy</em></h1>
+  <p class="updated">Last updated 1 November 2026</p>
+  <p>This explains what personal data thenaturalhome.co.uk collects and how it's used. The site has no accounts, forms or mailing list, so it collects very little.</p>
+
+  <h2>Who's responsible</h2>
+  <p>The site is run by C. Morrison in the United Kingdom, who is the data controller for the information below. Contact: <a href="mailto:[EMAIL]">[EMAIL]</a>.</p>
+
+  <h2 id="cookies">Analytics and cookies</h2>
+  <ul>
+    <li><strong>Google Analytics</strong> sets cookies (named <code>_ga</code> and <code>_ga_…</code>, lasting up to 2 years), so it only runs if you click "Accept" on the cookie banner. If you click "Reject", it never loads. It records the pages you view, your device and browser, your approximate location, and a random ID kept in the cookie. It's set up for statistics only, with no advertising features. The legal basis is your consent.</li>
+    <li><strong>Cloudflare Web Analytics</strong> doesn't set cookies or follow you across other sites. It only records things like which page was viewed, the site you came from, and your browser and country. The legal basis is the site's legitimate interest in knowing which pages are useful.</li>
+  </ul>
+  <p>You can change your choice at any time: <a href="#cookies" data-cookie-settings>open cookie settings</a>. Choosing "Reject" removes the Google Analytics cookies from this site. Your browser also remembers your cookie choice, which isn't personal data.</p>
+
+  <h2>Amazon links</h2>
+  <p>Links to books and products go to Amazon UK. As an Amazon Associate, C.&nbsp;Morrison earns from qualifying purchases. This site doesn't set any Amazon cookies, but once you click through, Amazon's own privacy notice and cookies apply on its site.</p>
+
+  <h2>Who else handles data</h2>
+  <ul>
+    <li><strong>GitHub Pages</strong> hosts the site and keeps standard web request logs, including your IP address.</li>
+    <li><strong>Google Fonts</strong> supplies the fonts, which reveals your IP address to Google as it does on most websites.</li>
+    <li><strong>Google</strong> (Google Analytics, only if you accept) and <strong>Cloudflare</strong> process the visit statistics above.</li>
+  </ul>
+  <p>Some of these providers are in the United States. Those transfers are covered by the UK's approved safeguards (the UK International Data Transfer Addendum and the UK-US data bridge where it applies). Your data is never sold.</p>
+
+  <h2>How long it's kept</h2>
+  <p>Google Analytics data is kept for 14 months, then Google deletes it. Hosting logs are kept short-term by the provider.</p>
+
+  <h2>Your rights</h2>
+  <p>You can ask to see or delete your data, or withdraw consent, at any time by emailing <a href="mailto:[EMAIL]">[EMAIL]</a>. If you're unhappy with how your data has been handled, you can complain to the Information Commissioner's Office at <a href="https://ico.org.uk" rel="noopener">ico.org.uk</a>.</p>
+</main>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-mini">
+      <span class="footer-brand">The Natural <em>Home</em> Collection</span>
+      <span>© 2025 C. Morrison  ·  <a href="index.html">Home</a>  ·  <a href="recipes/">All recipes</a>  ·  <a href="products.html">Recommended products</a>  ·  <a href="privacy.html">Privacy</a>  ·  <a href="privacy.html#cookies" data-cookie-settings>Cookie settings</a></span>
+    </div>
+  </div>
+</footer>
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { if (window.scrollY > 40) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); });
+  const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
