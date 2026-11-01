@@ -8,7 +8,7 @@
 // is guarded and the page works normally without it.
 (function () {
   var GA_ID = 'G-70F5257Y9B';
-  var CF_TOKEN = ''; // Cloudflare Web Analytics token for thenaturalhome.co.uk (Web Analytics > Add a site)
+  var CF_TOKEN = 'bbb32e592fb64fb6b777efc4558ada73'; // Cloudflare Web Analytics token for thenaturalhome.co.uk (Web Analytics > Add a site)
   var KEY = 'nh_analytics';
 
   function getChoice() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
