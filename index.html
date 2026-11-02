@@ -979,6 +979,22 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* Newsletter sign-up (MailerLite embedded form "Natural Home newsletter") */
+  .newsletter { padding: 110px 48px; background: var(--paper-warm); border-top: 1px solid var(--line-soft); }
+  @media (max-width: 720px) { .newsletter { padding: 80px 24px; } }
+  .newsletter-inner { max-width: 640px; margin: 0 auto; text-align: center; }
+  .newsletter h2.display { font-size: clamp(38px, 5vw, 58px); line-height: 1.1; }
+  .newsletter .lead { margin: 20px auto 32px; color: var(--ink-soft); font-size: 17px; line-height: 1.7; }
+  .nl-form { display: flex; gap: 12px; max-width: 520px; margin: 0 auto; }
+  @media (max-width: 560px) { .nl-form { flex-direction: column; } }
+  .nl-form input[type=email] { flex: 1; min-width: 0; padding: 16px 18px; font: 300 16px var(--sans); color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 0; }
+  .nl-form input[type=email]:focus { outline: 2px solid var(--rust); outline-offset: 1px; }
+  .nl-form .hero-cta { justify-content: center; cursor: pointer; font-family: var(--sans); }
+  .newsletter .nl-small { margin-top: 18px; font-size: 13px; color: var(--ink-mute); }
+  .newsletter .nl-small a { color: var(--rust); }
+  .newsletter .row-success { display: none; }
+  .newsletter .row-success p { font-size: 17px; color: var(--ink-soft); }
 </style>
 </head>
 <body>
@@ -1372,6 +1388,27 @@
   </div>
 </section>
 
+<section class="newsletter" id="newsletter">
+  <div class="newsletter-inner reveal ml-subscribe-form ml-subscribe-form-203013984574506217">
+    <div class="row-form">
+      <span class="eyebrow">The newsletter</span>
+      <h2 class="display" style="margin-top:24px">Natural home <em>notes</em>.</h2>
+      <p class="lead">Occasional emails with new free recipes from the handbooks and news about the collection. Free, and you can unsubscribe any time.</p>
+      <form class="ml-block-form nl-form" action="https://assets.mailerlite.com/jsonp/2714678/forms/203013984574506217/subscribe" data-code="" method="post" target="_blank">
+        <input aria-label="Email address" aria-required="true" required type="email" name="fields[email]" placeholder="you@example.com" autocomplete="email">
+        <input type="hidden" name="ml-submit" value="1">
+        <input type="hidden" name="anticsrf" value="true">
+        <button type="submit" class="hero-cta">Sign me up</button>
+      </form>
+      <p class="nl-small">We'll email you a link to confirm. See our <a href="privacy.html#newsletter">Privacy Policy</a>.</p>
+    </div>
+    <div class="row-success">
+      <h2 class="display">Nearly <em>there</em>.</h2>
+      <p style="margin-top:16px">Check your inbox for a confirmation email and click the link to finish signing up.</p>
+    </div>
+  </div>
+</section>
+
 <section class="cta-section" id="shop">
   <div class="reveal">
     <span class="eyebrow">Available now</span>
@@ -1420,7 +1457,7 @@
         <ul>
           <li><a href="https://www.amazon.co.uk/s?k=C+Morrison+Natural+Home+Collection&tag=thenaturalhome-21">Amazon UK</a></li>
           <li><a href="https://www.instagram.com/thenaturalhomeuk/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="#">Newsletter</a></li>
+          <li><a href="#newsletter">Newsletter</a></li>
         </ul>
       </div>
     </div>
@@ -1449,5 +1486,12 @@
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 
+<script>
+  function ml_webform_success_203013984574506217() {
+    document.querySelector('.ml-subscribe-form-203013984574506217 .row-success').style.display = 'block';
+    document.querySelector('.ml-subscribe-form-203013984574506217 .row-form').style.display = 'none';
+  }
+</script>
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519" type="text/javascript"></script>
 </body>
 </html>
