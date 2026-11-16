@@ -6,7 +6,7 @@
 
 Slow living, plainly written.
 
-Five practical handbooks for a calmer, more natural home — natural cleaning, beauty, kitchen, herbal remedies, and pet care. No fads, no wellness jargon. Just recipes that work, tested in a real UK kitchen.
+Five practical handbooks for a calmer, more natural home: natural cleaning, beauty, kitchen, herbal remedies, and pet care. No fads, no wellness jargon. Just recipes that work, tested in a real UK kitchen.
 
 The complete series is £20 on Kindle. Or start with whichever one fits your life right now.
 
@@ -20,7 +20,7 @@ Link in bio → thenaturalhome.co.uk
 
 Your cleaning cupboard is full of things you'd never knowingly choose.
 
-The Green Clean Handbook replaces every shop-bought spray with seven simple ingredients — bicarbonate of soda, white vinegar, castile soap, lemon, tea tree, lavender, and water. That's it.
+The Green Clean Handbook replaces every shop-bought spray with seven simple ingredients: bicarbonate of soda, white vinegar, castile soap, lemon, tea tree, lavender, and water. That's it.
 
 38 recipes covering every room in the house. Oven cleaner, laundry powder, mould spray, glass cleaner, fabric softener. All for pence, not pounds.
 
@@ -34,7 +34,7 @@ The Green Clean Handbook replaces every shop-bought spray with seven simple ingr
 
 You don't need forty-seven ingredients to have good skin.
 
-The Natural Beauty Handbook is 32 recipes for skincare, hair, body, lips, and bath — built from oils, butters, clays, and the plants that have been trusted for centuries. Beeswax, shea, rose hip, oat, honey, argan.
+The Natural Beauty Handbook is 32 recipes for skincare, hair, body, lips, and bath, built from oils, butters, clays, and the plants that have been trusted for centuries. Beeswax, shea, rose hip, oat, honey, argan.
 
 No synthetic fragrances. No preservatives you can't pronounce. No £40 serums.
 
@@ -48,7 +48,7 @@ No synthetic fragrances. No preservatives you can't pronounce. No £40 serums.
 
 The average UK household throws away £800 worth of food every year.
 
-The Zero-Waste Kitchen is 30 recipes built from what usually gets binned — vegetable peelings, bread crusts, citrus rinds, wilting herbs, yesterday's rice. Carrot top pesto. Rind marmalade. Stock from the bits you'd normally compost. Aquafaba meringues.
+The Zero-Waste Kitchen is 30 recipes built from what usually gets binned: vegetable peelings, bread crusts, citrus rinds, wilting herbs, yesterday's rice. Carrot top pesto. Rind marmalade. Stock from the bits you'd normally compost. Aquafaba meringues.
 
 Less waste. Less money. Better food.
 
@@ -62,7 +62,7 @@ Less waste. Less money. Better food.
 
 Your grandmother probably knew most of these.
 
-Natural Herbal Remedies at Home is 27 recipes for teas, tinctures, syrups, salves, and compresses — built from plants you can grow on a windowsill or buy by the gram from any health food shop. Elderberry immune syrup. Lavender sleep balm. Ginger and lemon cold tea. Calendula healing salve.
+Natural Herbal Remedies at Home is 27 recipes for teas, tinctures, syrups, salves, and compresses, built from plants you can grow on a windowsill or buy by the gram from any health food shop. Elderberry immune syrup. Lavender sleep balm. Ginger and lemon cold tea. Calendula healing salve.
 
 Every remedy is honest about what it can and can't do. No miracle claims.
 
@@ -99,7 +99,7 @@ Four ingredients. Two minutes. Costs about 8p a bottle.
 
 Combine, shake gently, spray, leave 30 seconds, wipe with a microfibre cloth. Not on natural stone, waxed or oiled wood, cast iron or aluminium, and never mix with bleach. Ventilate, and keep essential-oil sprays away from cats and other pets.
 
-Full recipe at thenaturalhome.co.uk (link in bio) — free, no sign-up.
+Full recipe at thenaturalhome.co.uk (link in bio). Free, no sign-up.
 
 #naturalcleaning #greenclean #allpurposecleaner #diycleaner #vinegarcleaning #naturalcleaningrecipe #ecofriendlycleaning #chemicalfree #nontoxichome #cleaninghacks #sustainablelifestyle #homemadecleaner #ukblogger #slowliving #zerowastecleaning
 
@@ -116,7 +116,7 @@ Ten minutes. Makes six tins. Lasts six months.
 
 Melt together in a bain-marie, pour into tins, done. You'll never pay £4 for a small tin of Carmex again.
 
-Full recipe at thenaturalhome.co.uk (link in bio) — free, no sign-up.
+Full recipe at thenaturalhome.co.uk (link in bio). Free, no sign-up.
 
 #lipbalm #diylipbalm #naturalbeauty #homemadebeauty #beeswax #sheabutter #naturalskincare #diyskincare #cleanbeauty #naturallipcare #plantbasedskincare #handmadebeauty #greenbeauty #ukblogger #slowbeauty
 
@@ -136,7 +136,7 @@ Blitz. Taste. Adjust. It's punchier than basil, faintly bitter in the best possi
 
 Good on pasta, toast, roasted veg, or straight off a spoon.
 
-Full recipe at thenaturalhome.co.uk (link in bio) — free, no sign-up.
+Full recipe at thenaturalhome.co.uk (link in bio). Free, no sign-up.
 
 #zerowaste #zerowastecooking #carrottoppesto #foodwaste #carrottops #pesto #sustainablecooking #noscrapleftbehind #sustainablefood #veggiewaste #ukrecipes #plantbased #reducewaste #zerowastefood #sustainableuk
 
@@ -154,9 +154,9 @@ A batch costs about £2. It lasts the winter.
 
 Simmer for 20 minutes until reduced by half. Strain. Cool. Stir in honey. Store in the fridge for up to 8 weeks.
 
-One tablespoon a day when you feel something coming on. No promises — but plenty of tradition behind it.
+One tablespoon a day when you feel something coming on. No promises, but plenty of tradition behind it.
 
-Full recipe at thenaturalhome.co.uk (link in bio) — free, no sign-up.
+Full recipe at thenaturalhome.co.uk (link in bio). Free, no sign-up.
 
 #elderberry #elderberrysyrup #herbalremedies #naturalimmunity #naturalremedies #herbalism #immunesupport #winterwellness #diyherbs #elderberries #plantmedicine #naturalwellness #ukherbs #slowliving #herbalismuk
 
@@ -175,7 +175,7 @@ Melt together, pour into a small tin, cool. Apply a little to paw pads before wa
 
 Fifteen minutes, makes enough for a whole season.
 
-Full recipe at thenaturalhome.co.uk (link in bio) — free, no sign-up.
+Full recipe at thenaturalhome.co.uk (link in bio). Free, no sign-up.
 
 #pawbalm #naturalpetcare #dogcare #winterdog #diydogcare #naturaldoggrooming #pawcare #doggrooming #chemicalfree #petcare #beeswax #dogowner #ukdog #naturaldog #dogwellness
 
@@ -185,7 +185,7 @@ Full recipe at thenaturalhome.co.uk (link in bio) — free, no sign-up.
 
 Every ingredient from all five handbooks. One place. Free.
 
-The Natural Home Recommended Products List is a 20-page PDF companion guide with 146 considered products across 12 categories — from bicarbonate of soda to dried elderberries to compostable poo bags. Each entry shows which book uses it and links directly to Amazon UK.
+The Natural Home Recommended Products List is a 20-page PDF companion guide with 146 considered products across 12 categories, from bicarbonate of soda to dried elderberries to compostable poo bags. Each entry shows which book uses it and links directly to Amazon UK.
 
 No sign-up. No email list. Just download and keep it.
 
