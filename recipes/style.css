@@ -609,3 +609,34 @@ footer {
   line-height: 1.55;
   color: var(--ink-mute);
 }
+
+/* FAQ — under the recipe method */
+.faq {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+.faq h3 {
+  font-family: var(--serif);
+  font-size: 24px;
+  color: var(--ink);
+  margin: 0 0 16px;
+}
+.faq-item {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+.faq-item:last-child { border-bottom: none; }
+.faq-item h4 {
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink);
+  margin: 0 0 6px;
+}
+.faq-item p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin: 0;
+}
